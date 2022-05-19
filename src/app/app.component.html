@@ -1,14 +1,14 @@
 <mat-toolbar>
-    <button mat-icon-button>
-        <mat-icon>menu</mat-icon>
-    </button>
-    <span>EpiCT Games</span>
-    <span class="example-spacer"></span>
-    <button mat-icon-button>
-        <mat-icon>favorite</mat-icon>
-    </button>
-    <button mat-icon-button>
-        <mat-icon>share</mat-icon>
-    </button>
+    <div class="col">
+        <span>EpiCT Games</span>
+    </div>
+    <div class="col-6">
+        <mat-form-field style="font-size: 0.95rem;">
+            <mat-label>Pesquisar</mat-label>
+            <input matInput #input>
+            <mat-icon> search</mat-icon>
+        </mat-form-field>
+    </div>
+    <div class="col"></div>
 </mat-toolbar>
 <router-outlet></router-outlet>
