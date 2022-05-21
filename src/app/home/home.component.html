@@ -1,0 +1,16 @@
+<mat-tab-group mat-align-tabs="center">
+    <mat-tab label="Games">
+        <mat-grid-list cols="3" rowHeight="2:1" [gutterSize]="'10px'">
+            <mat-grid-tile *ngFor="let tile of tiles">
+                <app-product [data]="tile"></app-product>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </mat-tab>
+    <mat-tab label="Events">
+        <mat-grid-list cols="1" rowHeight="6:1" [gutterSize]="'10px'">
+            <mat-grid-tile *ngFor="let tile of tiles">
+                <app-product [data]="tile"></app-product>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </mat-tab>
+  </mat-tab-group>
