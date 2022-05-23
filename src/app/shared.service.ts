@@ -27,7 +27,15 @@ export interface event {
 export class SharedService {
   /* Initialize the product information */
   private productSource = new BehaviorSubject<product>(JSON.parse(localStorage.getItem('product-page')!));
-  productOpened = this.productSource.asObservable()
+  productOpened = this.productSource.asObservable();
+
+  /* Initialize the event information */
+  private eventSource = new BehaviorSubject<event>(JSON.parse(localStorage.getItem('event-page')!));
+  eventOpened = this.eventSource.asObservable();
+
+  /* Initialize the cart_details information */
+  private cartSource = new BehaviorSubject<any>(localStorage.getItem('cart-page') ? JSON.parse(localStorage.getItem('cart-page')!) : JSON.parse('[]'));
+  cartOpened = this.cartSource.asObservable();
 
   products: any[] = [
     {
@@ -61,7 +69,7 @@ export class SharedService {
       platform: ['Battle.net', 'Steam', 'Playstation']
     },
     {
-      title: 'Fifa 2022',
+      title: 'FIFA 2022',
       key_price: '12,99 €',
       price: null,
       rating: 4.7,
@@ -118,5 +126,25 @@ export class SharedService {
   openProductPage(product: product) {
     this.productSource.next(product);
     localStorage.setItem('product-page', JSON.stringify(product));
+  }
+
+  /* Change the opened event page information */
+  openEventPage(event: event) {
+    this.eventSource.next(event);
+    localStorage.setItem('event-page', JSON.stringify(event));
+  }
+
+  /* Change the opened cart page information */
+  openCartPage(cart: any) {
+    if (cart == null) {
+      this.cartSource.next([]);
+      localStorage.setItem('cart-page', JSON.stringify([]));
+    } else {
+      var new_cart = JSON.parse(localStorage.getItem('cart-page')!);
+      new_cart.push(cart);
+      
+      this.cartSource.next(new_cart);
+      localStorage.setItem('cart-page', JSON.stringify(new_cart));
+    }
   }
 }

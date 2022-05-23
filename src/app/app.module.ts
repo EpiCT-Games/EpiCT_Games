@@ -19,6 +19,8 @@ import { EventComponent } from './event/event.component';
 import { FooterComponent } from './footer/footer.component';
 import { ShowProductComponent } from './show-product/show-product.component';
 import { ShowEventComponent } from './show-event/show-event.component';
+import { MatBadgeModule } from '@angular/material/badge';
+import { ShowCartComponent } from './show-cart/show-cart.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { ShowEventComponent } from './show-event/show-event.component';
     EventComponent,
     FooterComponent,
     ShowProductComponent,
-    ShowEventComponent
+    ShowEventComponent,
+    ShowCartComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,8 @@ import { ShowEventComponent } from './show-event/show-event.component';
     MatCardModule,
     MatDividerModule,
     MatGridListModule,
-    MatTabsModule
+    MatTabsModule,
+    MatBadgeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

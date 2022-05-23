@@ -21,4 +21,9 @@ export class ProductComponent implements OnInit {
     this._router.navigate(['/product']);
     this._service.openProductPage(this.data);
   }
+
+  addCart() {
+    //localStorage.setItem('cart-page', '[]');
+    this._service.openCartPage(this.data);
+  }
 }
