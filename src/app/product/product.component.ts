@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { SharedService } from '../shared.service';
 
 @Component({
   selector: 'app-product',
@@ -8,10 +10,15 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ProductComponent implements OnInit {
   @Input() data: any;
   
-  constructor() { }
+  isActive1 = false;
+
+  constructor(private _router: Router, private _service: SharedService) { }
 
   ngOnInit(): void {
   }
-
-  open_game() {}
+  
+  open_game() {
+    this._router.navigate(['/product']);
+    this._service.openProductPage(this.data);
+  }
 }

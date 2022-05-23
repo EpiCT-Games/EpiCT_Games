@@ -1,15 +1,19 @@
-<mat-card (click)="open_game()">
+<mat-card class="example-card" [class.mat-elevation-z2]="!isActive1" [class.mat-elevation-z8]="isActive1" (mouseenter)="isActive1 = true" (mouseleave)="isActive1 = false" (click)="open_game()">
     <mat-card-title-group>
-        <mat-card-title>{{data}}</mat-card-title>
+        <mat-card-title>{{data.title}}</mat-card-title>
         <mat-card-subtitle>Small</mat-card-subtitle>
         <img mat-card-sm-image src="https://material.angular.io/assets/img/examples/shiba2.jpg">
     </mat-card-title-group>
+    
     <mat-card-content>
-    <mat-divider inset></mat-divider>
-    <p>This card has divider and indeterminate progress as footer</p>
+        <mat-divider inset></mat-divider>
+        <p>This card has divider and indeterminate progress as footer</p>
     </mat-card-content>
+
     <mat-card-actions>
-    <button mat-button>LIKE</button>
-    <button mat-button>SHARE</button>
+        <button mat-button>{{data.key_price}}</button>
+        <button mat-button>
+            <mat-icon>shopping_cart</mat-icon>
+        </button>
     </mat-card-actions>
 </mat-card>

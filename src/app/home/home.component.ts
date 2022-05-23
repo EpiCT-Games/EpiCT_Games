@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { product, SharedService } from '../shared.service';
 
 @Component({
   selector: 'app-home',
@@ -6,11 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  tiles: string[] = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'];
+  products: product[];
 
-  constructor() { }
+  constructor(private _service: SharedService) {
+    this.products = this._service.getProducts();
+    console.log(this.products);
+  }
 
   ngOnInit(): void {
   }
-
 }

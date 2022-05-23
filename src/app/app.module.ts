@@ -17,6 +17,8 @@ import { ProductComponent } from './product/product.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { EventComponent } from './event/event.component';
 import { FooterComponent } from './footer/footer.component';
+import { ShowProductComponent } from './show-product/show-product.component';
+import { ShowEventComponent } from './show-event/show-event.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { FooterComponent } from './footer/footer.component';
     HomeComponent,
     ProductComponent,
     EventComponent,
-    FooterComponent
+    FooterComponent,
+    ShowProductComponent,
+    ShowEventComponent
   ],
   imports: [
     BrowserModule,
