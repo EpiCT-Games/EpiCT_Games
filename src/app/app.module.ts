@@ -21,6 +21,11 @@ import { ShowProductComponent } from './show-product/show-product.component';
 import { ShowEventComponent } from './show-event/show-event.component';
 import { MatBadgeModule } from '@angular/material/badge';
 import { ShowCartComponent } from './show-cart/show-cart.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [
@@ -31,7 +36,9 @@ import { ShowCartComponent } from './show-cart/show-cart.component';
     FooterComponent,
     ShowProductComponent,
     ShowEventComponent,
-    ShowCartComponent
+    ShowCartComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +53,11 @@ import { ShowCartComponent } from './show-cart/show-cart.component';
     MatDividerModule,
     MatGridListModule,
     MatTabsModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatDatepickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

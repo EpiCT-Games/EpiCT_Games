@@ -11,9 +11,16 @@
     </mat-card-title-group>
 
     <mat-card-actions>
-        <button mat-button class="large-btn" (click)="open_game()">{{data.key_price}}</button>
-        <button mat-button (click)="addCart()">
-            <mat-icon>shopping_cart</mat-icon>
-        </button>
+        <div class="row">
+            <div class="col">
+                <button mat-button style="width: 100%;" (click)="open_game()">{{data.key_price}}</button>
+            </div>
+
+            <div class="col-4">
+                <button mat-button (click)="addCart()">
+                    <mat-icon>shopping_cart</mat-icon>
+                </button>
+            </div>
+        </div>
     </mat-card-actions>
 </mat-card>
