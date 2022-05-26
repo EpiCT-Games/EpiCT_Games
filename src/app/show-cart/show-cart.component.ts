@@ -14,22 +14,27 @@ export class ShowCartComponent implements OnInit {
   constructor(private _service: SharedService) {
     this.subscription = this._service.cartOpened.subscribe((data: product[]) => {
       var cart = data;
-      console.log(data);
       
       /* Get the qty of items */
       cart.forEach((element: any) => {
-        element.qty = cart.filter((v: any) => (v.name === element.name)).length;
-        this.cart.push(element);
+        this.cart.push({ 
+          title: element.title,
+          key_price: element.key_price,
+          price: element.price,
+          rating: element.rating,
+          description: element.description,
+          image: element.image,
+          comments: element.comments,
+          platforms: element.platforms,
+          qty: cart.filter((v: any) => (v.title === element.title)).length });
       });
-      
+
       /* Remove duplicate values es6 magic */
       this.cart = this.cart.filter((value: any, index: any, self: any) =>
         index === self.findIndex((t: any) => (
-        t.place === value.place && t.name === value.name
+        t.place === value.place && t.title === value.title
         ))
       );
-
-      //console.log(this.cart);
     });
   }
 

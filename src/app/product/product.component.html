@@ -1,14 +1,12 @@
-<mat-card [class.mat-elevation-z2]="!isActive1" [class.mat-elevation-z8]="isActive1" 
+<mat-card [class.mat-elevation-z2]="!isActive1" [class.mat-elevation-z8]="isActive1"
     (mouseenter)="isActive1 = true" (mouseleave)="isActive1 = false">
     
     <mat-card-content (click)="open_game()">
-        <img src="https://material.angular.io/assets/img/examples/shiba2.jpg">
+        <img src="{{data.image}}">
         <mat-divider inset></mat-divider>
     </mat-card-content>
     
-    <mat-card-title-group (click)="open_game()">  
-        <mat-card-title>{{data.title}}</mat-card-title>      
-    </mat-card-title-group>
+    <h2 (click)="open_game()">{{data.title}}</h2>      
 
     <mat-card-actions>
         <div class="row">

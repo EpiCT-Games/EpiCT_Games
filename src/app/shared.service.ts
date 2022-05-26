@@ -55,7 +55,7 @@ export class SharedService {
       price: '11,90 €',
       rating: 4.5,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      image: null,
+      image: '/assets/img/products/rocket_league.jpeg',
       comments: ['1', '2'],
       platform: ['Steam', 'Origin', 'Xbox', 'Playstation']
     },
@@ -65,7 +65,7 @@ export class SharedService {
       price: null,
       rating: 3.5,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      image: null,
+      image: '/assets/img/products/fortnite.jpeg',
       comments: ['1', '2'],
       platform: ['Epic Games', 'Xbox', 'Playstation']
     },
@@ -75,7 +75,7 @@ export class SharedService {
       price: '35,90 €',
       rating: 4.2,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      image: null,
+      image: '/assets/img/products/overwatch.jpeg',
       comments: ['1', '2'],
       platform: ['Battle.net', 'Steam', 'Playstation']
     },
@@ -85,7 +85,7 @@ export class SharedService {
       price: null,
       rating: 4.7,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      image: null,
+      image: '/assets/img/products/fifa22.jpeg',
       comments: ['1', '2'],
       platform: ['EA', 'Steam', 'Playstation']
     },
@@ -95,7 +95,7 @@ export class SharedService {
       price: '19,90 €',
       rating: 4.9,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      image: null,
+      image: '/assets/img/products/minecraft.jpeg',
       comments: ['1', '2'],
       platform: ['Steam', 'PC']
     },
@@ -105,7 +105,7 @@ export class SharedService {
       price: '15,90 €',
       rating: 3.8,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      image: null,
+      image: '/assets/img/products/no_mans_sky.jpeg',
       comments: ['1', '2'],
       platform: ['Steam', 'PC']
     },
@@ -115,27 +115,27 @@ export class SharedService {
       price: '19,90 €',
       rating: 4.5,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      image: null,
+      image: '/assets/img/products/witcher3.jpeg',
       comments: ['1', '2'],
       platform: ['Steam', 'PC', 'Playstation', 'Xbox']
     },
     {
-      title: 'LEGO Star Wars: The Skywalker Saga',
+      title: 'LEGO Star Wars',
       key_price: '12,99 €',
       price: '16,90 €',
       rating: 3.2,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      image: null,
+      image: '/assets/img/products/lego_starwars.jpeg',
       comments: ['1', '2'],
       platform: ['Steam', 'PC', 'Playstation', 'Xbox']
     },
     {
-      title: 'Super Smash Mario Bros',
+      title: 'Super Smash Bros',
       key_price: '32,99 €',
       price: '32,99 €',
       rating: 4.1,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      image: null,
+      image: '/assets/img/products/super_smash_bros_ultimate.jpeg',
       comments: ['1', '2'],
       platform: ['Nintendo Switch']
     }
@@ -203,12 +203,13 @@ export class SharedService {
     } else {
       var new_cart = JSON.parse(localStorage.getItem('cart-page')!);
       new_cart.push(cart);
-      
+
       this.cartSource.next(new_cart);
       localStorage.setItem('cart-page', JSON.stringify(new_cart));
     }
   }
-
+  
+  /* Change the filter value */
   setFilter(filter: string) {
     this.filterSource.next(filter);
     localStorage.setItem('filter', filter);
