@@ -8,7 +8,7 @@ export interface product {
   rating: number,
   description: string,
   image: any,
-  comments: string[],
+  comments: any[],
   platforms: string[]
 }
 
@@ -19,6 +19,13 @@ export interface event {
   start_date: string,
   end_date: string,
   price: string,
+}
+
+export interface comment {
+  id: number,
+  fname: string,
+  lname: string,
+  comment: string,
 }
 
 @Injectable({
@@ -36,6 +43,10 @@ export class SharedService {
   /* Initialize the cart_details information */
   private cartSource = new BehaviorSubject<any>(localStorage.getItem('cart-page') ? JSON.parse(localStorage.getItem('cart-page')!) : JSON.parse('[]'));
   cartOpened = this.cartSource.asObservable();
+
+  /* Initialize the cart_details information */
+  private filterSource = new BehaviorSubject<any>(localStorage.getItem('filter') ? localStorage.getItem('filter') : '');
+  filter = this.filterSource.asObservable();
 
   products: any[] = [
     {
@@ -69,7 +80,7 @@ export class SharedService {
       platform: ['Battle.net', 'Steam', 'Playstation']
     },
     {
-      title: 'FIFA 2022',
+      title: 'FIFA 22',
       key_price: '12,99 €',
       price: null,
       rating: 4.7,
@@ -77,6 +88,56 @@ export class SharedService {
       image: null,
       comments: ['1', '2'],
       platform: ['EA', 'Steam', 'Playstation']
+    },
+    {
+      title: 'Minecraft Java Edition',
+      key_price: '19,90 €',
+      price: '19,90 €',
+      rating: 4.9,
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      image: null,
+      comments: ['1', '2'],
+      platform: ['Steam', 'PC']
+    },
+    {
+      title: 'No Man\'s sky',
+      key_price: '15,90 €',
+      price: '15,90 €',
+      rating: 3.8,
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      image: null,
+      comments: ['1', '2'],
+      platform: ['Steam', 'PC']
+    },
+    {
+      title: 'The Witcher 3',
+      key_price: '19,90 €',
+      price: '19,90 €',
+      rating: 4.5,
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      image: null,
+      comments: ['1', '2'],
+      platform: ['Steam', 'PC', 'Playstation', 'Xbox']
+    },
+    {
+      title: 'LEGO Star Wars: The Skywalker Saga',
+      key_price: '12,99 €',
+      price: '16,90 €',
+      rating: 3.2,
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      image: null,
+      comments: ['1', '2'],
+      platform: ['Steam', 'PC', 'Playstation', 'Xbox']
+    },
+    {
+      title: 'Super Smash Mario Bros',
+      key_price: '32,99 €',
+      price: '32,99 €',
+      rating: 4.1,
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      image: null,
+      comments: ['1', '2'],
+      platform: ['Nintendo Switch']
     }
   ];
 
@@ -146,5 +207,10 @@ export class SharedService {
       this.cartSource.next(new_cart);
       localStorage.setItem('cart-page', JSON.stringify(new_cart));
     }
+  }
+
+  setFilter(filter: string) {
+    this.filterSource.next(filter);
+    localStorage.setItem('filter', filter);
   }
 }

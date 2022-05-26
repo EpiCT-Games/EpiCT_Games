@@ -17,13 +17,14 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {
   }
   
+  /* Open the page with the product details */
   open_game() {
     this._router.navigate(['/product']);
     this._service.openProductPage(this.data);
   }
 
+  /* Add the selected item to the shopping cart */
   addCart() {
-    //localStorage.setItem('cart-page', '[]');
     this._service.openCartPage(this.data);
   }
 }

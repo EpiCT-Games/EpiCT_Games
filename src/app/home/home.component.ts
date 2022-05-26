@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { product, SharedService } from '../shared.service';
 
 @Component({
@@ -7,13 +8,24 @@ import { product, SharedService } from '../shared.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  products: product[];
+  @Input() filterValue: any;
+  products!: product[];
+  subscription: Subscription = new Subscription();
 
   constructor(private _service: SharedService) {
-    this.products = this._service.getProducts();
-    console.log(this.products);
+    //this.products = this._service.getProducts();
+    
+    this.subscription = this._service.filter.subscribe((data: string) => {
+      this.filterValue = data;
+      if (this.filterValue !== '') {
+        this.products = this._service.getProducts().filter((product: product) => product.title.toLowerCase().includes(this.filterValue.toLowerCase()));
+      } else {
+        this.products = this._service.getProducts();
+      }
+    });
   }
 
   ngOnInit(): void {
+    this.products = this._service.getProducts();
   }
 }

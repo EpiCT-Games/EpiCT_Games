@@ -1,24 +1,27 @@
-<div class="row">
-    <div class="col-2">
-        <p>Filtros e cenas</p>
-    </div>
-    
-    <div class="col">
-        <mat-tab-group style="background-color: grey" mat-align-tabs="center">
-            <mat-tab label="Games">
-                <mat-grid-list cols="4" rowHeight="1:1">
-                    <mat-grid-tile *ngFor="let product of products">
-                        <app-product [data]="product"></app-product>
-                    </mat-grid-tile>
-                </mat-grid-list>
-            </mat-tab>
-            <mat-tab label="Events">
-                <mat-grid-list cols="1" rowHeight="6:1" [gutterSize]="'10px'">
-                    <mat-grid-tile *ngFor="let product of products">
-                        <app-product [data]="product"></app-product>
-                    </mat-grid-tile>
-                </mat-grid-list>
-            </mat-tab>
-        </mat-tab-group>
+
+<div class="row w-100">
+    <div class="row">
+        <div class="col-2">
+            <p>Filtros e cenas</p>
+        </div>
+        
+        <div class="col">
+            <mat-tab-group style="background-color: grey" mat-align-tabs="center">
+                <mat-tab label="Games">
+                    <mat-grid-list cols="4" rowHeight="1:1">
+                        <mat-grid-tile *ngFor="let product of products">
+                            <app-product [data]="product"></app-product>
+                        </mat-grid-tile>
+                    </mat-grid-list>
+                </mat-tab>
+                <mat-tab label="Events">
+                    <mat-grid-list cols="1" rowHeight="6:1" [gutterSize]="'10px'">
+                        <mat-grid-tile *ngFor="let product of products">
+                            <app-product [data]="product"></app-product>
+                        </mat-grid-tile>
+                    </mat-grid-list>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
     </div>
 </div>

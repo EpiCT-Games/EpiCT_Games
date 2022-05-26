@@ -12,8 +12,9 @@ import { SharedService } from './shared.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'EpiCT_Games';
-  cart_number = 0;
+  filterValue: string = '';
+  title: string = 'EpiCT_Games';
+  cart_number: number = 0;
   subscription: Subscription = new Subscription();
 
   constructor(private _router: Router, private _service: SharedService, public dialog: MatDialog) {}
@@ -24,20 +25,29 @@ export class AppComponent {
     });
   }
 
+  applyFilter(event: Event) {
+    this.filterValue = (event.target as HTMLInputElement).value;
+    this._service.setFilter(this.filterValue);
+  }
+
+  /* Redirect to the home page */
   redirectHome() {
     this._router.navigate(['/home']);
   }
 
+  /* Redirect to the shopping cart page */
   redirectCart() {
-    this._service.openCartPage(null);
+    this._router.navigate(['/cart']);
   }
 
+  /* Open Login Dialog */
   redirectLogin() {
     const dialogRef = this.dialog.open(LoginComponent, {
       width: '20%'
     });
   }
 
+  /* Open Register Dialog */
   redirectRegister() {
     const dialogRef = this.dialog.open(RegisterComponent);
   }
