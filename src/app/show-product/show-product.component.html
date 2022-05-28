@@ -1,1 +1,88 @@
-<p>show-product works!</p>
+<div class="row my-3"></div>
+
+<div class="row">
+    <div class="col-4">
+        <img src="{{product?.image}}" >
+        <div>
+            <!-- avaliaçao do jogo -->
+            <mat-card id="rating">
+                <!-- <mat-card-header > -->
+                <mat-card-title>Avaliação</mat-card-title>
+                <!-- </mat-card-header> -->
+                <mat-card-content >
+                    <mat-card-title >
+                        <mat-icon *ngFor="let i of rateInt">star</mat-icon>
+                        <mat-icon *ngIf="rateDouble > 0">star_half</mat-icon> 
+                    </mat-card-title>
+                 </mat-card-content>
+            </mat-card>
+           
+        </div>           
+    </div>
+
+    <!-- <div class="col-"></div> -->
+    
+    <div class="col">
+        <h1>{{product?.title}}</h1>
+
+        <div class="row">
+            <div class="col">
+                <p>{{product?.description}}</p>
+            </div>
+
+            <div class="col"> 
+                <div class="row">
+                </div>
+        
+                <div class="row">
+                    <h2>{{product?.key_price}}</h2>
+                    <button  mat-raised-button color="primary">Comprar key
+                        <mat-icon style="transform: rotate(45deg);">key</mat-icon>
+                    </button>
+                    
+                </div>
+
+                <br>
+
+                <div class="row">
+                    <h2>{{product?.price}}</h2>
+                    <button  mat-raised-button color="primary">Comprar CD
+                        <mat-icon>album</mat-icon>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col">
+    <div class="row" style="background-color: grey;">
+        <h3>Comentários</h3>
+    </div>
+
+    <div class="row" >
+        <!-- display product comments in cols -->
+        <div class="col" *ngFor="let comment of product?.comments" >
+            <div class="col">
+                <mat-card id="comment">
+                    {{comment}}
+                </mat-card>
+            </div>
+        </div>
+
+        <div class="col">
+            <mat-card id="comment">
+                <mat-card-content>
+                    <mat-form-field color="accent">
+                        <textarea  matInput placeholder="Comentário"></textarea>
+                    </mat-form-field>
+                </mat-card-content>
+                
+                <button mat-button color="accent">Comentar</button>
+                
+            </mat-card>
+        </div>
+        <!-- comment section -->    
+    </div>
+</div>
