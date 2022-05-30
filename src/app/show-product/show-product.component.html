@@ -36,7 +36,7 @@
         
                 <div class="row">
                     <h2>{{product?.key_price}}</h2>
-                    <button  mat-raised-button color="primary">Comprar key
+                    <button (click)="addCartKey()" mat-raised-button color="primary">Comprar key
                         <mat-icon style="transform: rotate(45deg);">key</mat-icon>
                     </button>
                     
@@ -46,7 +46,7 @@
 
                 <div class="row">
                     <h2>{{product?.price}}</h2>
-                    <button  mat-raised-button color="primary">Comprar CD
+                    <button *ngIf="product.price != null" (click)="addCartCD()" mat-raised-button color="primary">Comprar CD
                         <mat-icon>album</mat-icon>
                     </button>
                 </div>
@@ -73,7 +73,6 @@
 
         <div class="col">
             <mat-card id="comment">
-                
                 <form [formGroup]="form">
                     <mat-form-field appearance="fill">
                         <mat-label>Send message</mat-label>

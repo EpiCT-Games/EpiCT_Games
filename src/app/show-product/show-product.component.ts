@@ -10,7 +10,7 @@ import { FormGroup, FormControl, Validators,  ValidationErrors, ValidatorFn, Abs
   styleUrls: ['./show-product.component.scss']
 })
 export class ShowProductComponent implements OnInit {
-  product : product | null = null;
+  product!: product;
   subscription : Subscription = new Subscription();
   rateInt : number[] = [];
   rateDouble : number = 0;
@@ -20,7 +20,6 @@ export class ShowProductComponent implements OnInit {
     this.subscription = this._service.productOpened.subscribe((data: product) => {
       this.product = data;
     });
-    
   }
 
   ngOnInit(): void {
@@ -37,9 +36,7 @@ export class ShowProductComponent implements OnInit {
   
   calculateRate(){
     this.rateInt = Array(Math.floor(Number(this.product?.rating))).fill(Math.floor(Number(this.product?.rating))); // [4,4,4,4,4]
-    console.log(this.rateInt);
     this.rateDouble = Number(this.product?.rating) - this.rateInt.length;
-    console.log(this.rateDouble);
   }
 
   refreshProducts(){
@@ -47,6 +44,18 @@ export class ShowProductComponent implements OnInit {
       this.product = data;
     });
     console.log(this.product);
+  }
+
+  addCartKey() {
+    var data: any = this.product;
+    data.type = 'key';
+    this._service.openCartPage(data);
+  }
+
+  addCartCD() {
+    var data: any = this.product;
+    data.type = 'CD';
+    this._service.openCartPage(data);
   }
 
   addComment(){

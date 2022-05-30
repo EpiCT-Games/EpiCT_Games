@@ -17,9 +17,9 @@ export class ShowCartComponent implements OnInit {
     this.subscription = this._service.cartOpened.subscribe((data: product[]) => {
       var cart = data;
       this.cart_subscription = data;
-      
+
       /* Get the qty of items */
-      cart.forEach((element: any) => {
+      cart.forEach((element: any) => {        
         this.cart.push({ 
           title: element.title,
           key_price: element.key_price,
@@ -30,13 +30,15 @@ export class ShowCartComponent implements OnInit {
           type: element.type,
           comments: element.comments,
           platforms: element.platforms,
-          qty: cart.filter((v: any) => (v.title === element.title)).length });
+          qty: cart.filter((v: any) => (v.title === element.title && v.type === element.type)).length
+        });
+
       });
 
       /* Remove duplicate values es6 magic */
       this.cart = this.cart.filter((value: any, index: any, self: any) =>
         index === self.findIndex((t: any) => (
-        t.place === value.place && t.title === value.title
+        t.place === value.place && t.title === value.title && t.type === value.type
         ))
       );
     });
@@ -57,7 +59,7 @@ export class ShowCartComponent implements OnInit {
   }
 
   removeItem(product: any) {
-    this.cart_subscription.splice(this.cart_subscription.findIndex((p: any) => p.title == product.title), 1);
+    this.cart_subscription.splice(this.cart_subscription.findIndex((p: any) => p.title == product.title && p.type == product.type), 1);
     
     this._service.updateCartPage(this.cart_subscription);
 
