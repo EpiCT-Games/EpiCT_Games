@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { product, SharedService } from '../shared.service';
+import { FormGroup, FormControl, Validators,  ValidationErrors, ValidatorFn, AbstractControl, FormBuilder } from '@angular/forms';
+
 
 @Component({
   selector: 'app-show-product',
@@ -12,8 +14,9 @@ export class ShowProductComponent implements OnInit {
   subscription : Subscription = new Subscription();
   rateInt : number[] = [];
   rateDouble : number = 0;
-  
-  constructor(private _service: SharedService) {
+  form!: FormGroup;
+
+  constructor(private _formBuilder: FormBuilder,private _service: SharedService) {
     this.subscription = this._service.productOpened.subscribe((data: product) => {
       this.product = data;
     });
@@ -23,6 +26,9 @@ export class ShowProductComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.product);
     this.calculateRate();
+    this.form = this._formBuilder.group({
+      msg: new FormControl('', [Validators.required]),    
+    });
   }
 
   ngOnDestroy() {
@@ -34,5 +40,24 @@ export class ShowProductComponent implements OnInit {
     console.log(this.rateInt);
     this.rateDouble = Number(this.product?.rating) - this.rateInt.length;
     console.log(this.rateDouble);
+  }
+
+  refreshProducts(){
+    this.subscription = this._service.productOpened.subscribe((data: product) => {
+      this.product = data;
+    });
+    console.log(this.product);
+  }
+
+  addComment(){
+    console.log("comentario");
+    var products: product[] = this._service.getProducts();
+
+    console.log(products.find((p: product) => p.title == this.product?.title)!.comments.push(this.form.get('msg')?.value))
+    console.log(products);
+    localStorage.setItem('products', JSON.stringify(
+      products
+    ));
+    console.log(JSON.parse(localStorage.getItem('products')!));
   }
 }

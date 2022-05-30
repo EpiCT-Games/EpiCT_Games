@@ -73,16 +73,18 @@
 
         <div class="col">
             <mat-card id="comment">
-                <mat-card-content>
-                    <mat-form-field color="accent">
-                        <textarea  matInput placeholder="Comentário"></textarea>
+                
+                <form [formGroup]="form">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Send message</mat-label>
+                        <input  matInput type="text" formControlName="msg" >
+                        <button *ngIf="form.get('msg')?.value" matSuffix mat-icon-button aria-label="Clear" (click)="addComment()">
+                            <mat-icon>send</mat-icon>
+                        </button>
                     </mat-form-field>
-                </mat-card-content>
-                
-                <button mat-button color="accent">Comentar</button>
-                
+                </form>
+            
             </mat-card>
-        </div>
-        <!-- comment section -->    
+        </div> 
     </div>
 </div>
