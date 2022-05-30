@@ -12,9 +12,7 @@ export class HomeComponent implements OnInit {
   products!: product[];
   subscription: Subscription = new Subscription();
 
-  constructor(private _service: SharedService) {
-    //this.products = this._service.getProducts();
-    
+  constructor(private _service: SharedService) {    
     this.subscription = this._service.filter.subscribe((data: string) => {
       this.filterValue = data;
       if (this.filterValue !== '') {

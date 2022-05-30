@@ -208,6 +208,20 @@ export class SharedService {
       localStorage.setItem('cart-page', JSON.stringify(new_cart));
     }
   }
+
+  /* Update the opened cart page information */
+  updateCartPage(cart: any) {
+    this.cartSource.next([]);
+    localStorage.setItem('cart-page', JSON.stringify([]));
+
+    cart.forEach((element: any) => {
+      var new_cart = JSON.parse(localStorage.getItem('cart-page')!);
+      new_cart.push(element);
+
+      this.cartSource.next(new_cart);
+      localStorage.setItem('cart-page', JSON.stringify(new_cart));
+    });
+  }
   
   /* Change the filter value */
   setFilter(filter: string) {
