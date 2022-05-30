@@ -1,0 +1,15 @@
+mat-card {
+    background-color: #09703e;
+    cursor: pointer;
+    width: 85%;
+    height: 95%;
+    margin: 30px
+}
+
+mat-card img{
+    object-fit: fill; /*this makes the image in src fit to the size specified below*/
+    max-width: 50%; /* Here you can use wherever you want to specify the width and also the height of the <img>*/
+
+    margin-bottom: 10px;
+    border-radius: 5px;
+}

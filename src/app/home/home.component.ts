@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { product, SharedService } from '../shared.service';
+import { product,event, SharedService } from '../shared.service';
 
 @Component({
   selector: 'app-home',
@@ -10,6 +10,7 @@ import { product, SharedService } from '../shared.service';
 export class HomeComponent implements OnInit {
   @Input() filterValue: any;
   products!: product[];
+  events!: event[];
   subscription: Subscription = new Subscription();
 
   constructor(private _service: SharedService) {    
@@ -25,5 +26,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.products = this._service.getProducts();
+    this.events = this._service.getEvent();
+    console.log(this.products);
   }
 }

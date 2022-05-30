@@ -15,6 +15,7 @@ export interface product {
 export interface event {
   title: string,
   location: string,
+  img: any,
   game: string,
   start_date: string,
   end_date: string,
@@ -148,7 +149,8 @@ export class SharedService {
       game: 'CS:GO',
       start_date: '2022-06-01',
       end_date: '2022-06-02',
-      price: '100,00 €'
+      price: '100,00 €',
+      img: '/assets/img/events/dreamhack.jpg',
     }
   ]
 
@@ -160,7 +162,7 @@ export class SharedService {
     }
 
     if (JSON.parse(localStorage.getItem('products')!) != this.products) {
-      localStorage.setItem('products', JSON.stringify(this.products));
+      this.products = JSON.parse(localStorage.getItem('products')!);
     }
     
     return JSON.parse(localStorage.getItem('products')!);
