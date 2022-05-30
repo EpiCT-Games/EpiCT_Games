@@ -40,8 +40,10 @@
                 <p>{{item.key_price}}</p>
             </div>
     
-            <div class="col h-100 my-auto">
-                <p>{{item.qty}}</p>
+            <div class="col h-100 my-auto d-flex">
+                <mat-form-field color="accent" appearance="outline">
+                    <input matInput type="text" value="{{item.qty}}">
+                </mat-form-field>
             </div>
     
             <div class="col h-100 my-auto">

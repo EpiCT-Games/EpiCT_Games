@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: 'product', component: ShowProductComponent },
   { path: 'event', component: ShowEventComponent },
   { path: 'cart', component: ShowCartComponent },
+  { path: 'register', component: RegisterComponent },
   { path: '',   redirectTo: '/home', pathMatch: 'full' },   /* Default routing to HomeComponent */
   //{ path: '**' , component: PageNotFoundComponent }         /* 404 not found will be redirected to PageNotFoundComponent */
 ];
