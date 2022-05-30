@@ -28,6 +28,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     ShowEventComponent,
     ShowCartComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,
