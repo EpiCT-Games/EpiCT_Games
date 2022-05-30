@@ -1,3 +1,4 @@
+import { LabelType, Options } from '@angular-slider/ngx-slider';
 import { Component, Input, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { product,event, SharedService } from '../shared.service';
@@ -12,6 +13,24 @@ export class HomeComponent implements OnInit {
   products!: product[];
   events!: event[];
   subscription: Subscription = new Subscription();
+  categories_expanded: boolean = false;
+
+  minValue: number = 0;
+  maxValue: number = 999;
+  options: Options = {
+    floor: 0,
+    ceil: 999,
+    translate: (value: number, label: LabelType): string => {
+      switch (label) {
+        case LabelType.Low:
+          return value + ' €';
+        case LabelType.High:
+          return value + ' €';
+        default:
+          return value + ' €';
+      }
+    }
+  };
 
   constructor(private _service: SharedService) {    
     this.subscription = this._service.filter.subscribe((data: string) => {
@@ -29,4 +48,5 @@ export class HomeComponent implements OnInit {
     this.events = this._service.getEvent();
     console.log(this.products);
   }
+  
 }
