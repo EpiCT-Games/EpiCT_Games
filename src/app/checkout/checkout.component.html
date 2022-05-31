@@ -4,16 +4,59 @@
         <ng-template matStepLabel>Informações</ng-template>
         
         <div class="col">
+            <div class="row mx-auto">
+                <mat-form-field class="mx-auto" appearance="fill">
+                    <mat-label>Nome</mat-label>
+                    <input matInput placeholder="João Alberto Silva" formControlName="name" required>
+                </mat-form-field>
+            </div>
+
             <div class="row">
-                <mat-form-field appearance="fill">
-                    <mat-label>Name</mat-label>
-                    <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-                  </mat-form-field>
+                <div class="col d-flex justify-content-center">
+                    <mat-select-country class="mx-auto my-auto" appearance="fill"
+                        label="País"
+                        formControlName="country"
+                        [required]="true">
+                    </mat-select-country>
+                </div>
+
+                <div class="col d-flex justify-content-center">
+                    <mat-form-field class="mx-auto" appearance="fill">
+                        <mat-label>Cidade/Estado</mat-label>
+                        <input matInput placeholder="Lisboa" formControlName="city" required>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col d-flex justify-content-center">
+                    <mat-form-field class="mx-auto" appearance="fill">
+                        <mat-label>Morada</mat-label>
+                        <input matInput placeholder="Rua Principal Nº1 1ºEsq" formControlName="address" required>
+                    </mat-form-field>
+                </div>
+
+                <div class="col d-flex justify-content-center">
+                    <mat-form-field class="mx-auto" appearance="fill">
+                        <mat-label>Código de Postal</mat-label>
+                        <input matInput placeholder="1000-001" formControlName="post_code" required>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col d-flex justify-content-center">
+                    <mat-form-field class="mx-auto" appearance="fill">
+                        <mat-label>NIF</mat-label>
+                        <input matInput formControlName="nif">
+                    </mat-form-field>
+                </div>
+                
+                <div class="col"></div>
             </div>
             
-            <button mat-button matStepperNext>Próximo <mat-icon>navigate_next</mat-icon></button>
-        </div>
-        
+            <button class="mt-4" mat-button matStepperNext>Próximo <mat-icon>navigate_next</mat-icon></button>
+        </div>   
       </form>
     </mat-step>
 
@@ -37,7 +80,7 @@
     </mat-step>
 
     <mat-step>
-      <ng-template matStepLabel>Done</ng-template>
+      <ng-template matStepLabel>Confirmar Dados</ng-template>
       <p>You are now done.</p>
       <div>
         <button class="mr-3"mat-button matStepperPrevious><mat-icon>navigate_before</mat-icon> Anterior</button>

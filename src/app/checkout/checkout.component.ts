@@ -18,12 +18,17 @@ import { DoneComponent } from './done/done.component';
 export class CheckoutComponent implements OnInit {
   infoForm!: FormGroup;
   paymentForm!: FormGroup;
-
+ 
   constructor(private _formBuilder: FormBuilder, public done_dialog: MatDialog) {}
 
   ngOnInit() {
     this.infoForm = this._formBuilder.group({
-      firstCtrl: ['', Validators.required],
+      name: ['', Validators.required],
+      country: [''],
+      city: ['', Validators.required],
+      address: ['', Validators.required],
+      post_code: ['', Validators.required],
+      nif: [''],
     });
     this.paymentForm = this._formBuilder.group({
       secondCtrl: ['', Validators.required],

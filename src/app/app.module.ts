@@ -31,6 +31,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { DoneComponent } from './checkout/done/done.component';
 import { MatStepperModule } from '@angular/material/stepper';
+import { MatSelectCountryModule } from "@angular-material-extensions/select-country";
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -67,7 +69,9 @@ import { MatStepperModule } from '@angular/material/stepper';
     MatDatepickerModule,
     NgxSliderModule,
     MatCheckboxModule,
-    MatStepperModule
+    MatStepperModule,
+    MatSelectCountryModule.forRoot('pt'),
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
