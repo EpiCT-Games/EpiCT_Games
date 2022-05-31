@@ -29,7 +29,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { CheckoutComponent } from './checkout/checkout.component';
-
+import { DoneComponent } from './checkout/done/done.component';
+import { MatStepperModule } from '@angular/material/stepper';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { CheckoutComponent } from './checkout/checkout.component';
     ShowCartComponent,
     LoginComponent,
     RegisterComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    DoneComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +66,8 @@ import { CheckoutComponent } from './checkout/checkout.component';
     ReactiveFormsModule,
     MatDatepickerModule,
     NgxSliderModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatStepperModule
   ],
   providers: [],
   bootstrap: [AppComponent]

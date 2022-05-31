@@ -1,1 +1,47 @@
-<p>checkout works!</p>
+<mat-stepper class="mt-4">
+    <mat-step [stepControl]="infoForm" errorMessage="Preencha as informações">
+      <form [formGroup]="infoForm">
+        <ng-template matStepLabel>Informações</ng-template>
+        
+        <div class="col">
+            <div class="row">
+                <mat-form-field appearance="fill">
+                    <mat-label>Name</mat-label>
+                    <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+                  </mat-form-field>
+            </div>
+            
+            <button mat-button matStepperNext>Próximo <mat-icon>navigate_next</mat-icon></button>
+        </div>
+        
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="paymentForm" errorMessage="Selecione método de pagamento">
+      <form [formGroup]="paymentForm">
+        <ng-template matStepLabel>Pagamento</ng-template>
+        
+        <div class="col">
+            <div class="row">
+                <mat-form-field appearance="fill">
+                    <mat-label>Address</mat-label>
+                    <input matInput placeholder="Ex. 1 Main St, New York, NY" formControlName="secondCtrl"
+                           required>
+                  </mat-form-field>
+            </div>
+
+            <button class="mr-3" mat-button matStepperPrevious><mat-icon>navigate_before</mat-icon> Anterior</button>
+            <button class="mx-3" mat-button matStepperNext>Próximo <mat-icon>navigate_next</mat-icon></button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button class="mr-3"mat-button matStepperPrevious><mat-icon>navigate_before</mat-icon> Anterior</button>
+        <button class="mx-3" mat-button (click)="checkoutDone()">Finalizar <mat-icon>check</mat-icon></button>
+      </div>
+    </mat-step>
+</mat-stepper>

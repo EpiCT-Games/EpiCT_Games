@@ -48,5 +48,4 @@ export class HomeComponent implements OnInit {
     this.events = this._service.getEvent();
     console.log(this.products);
   }
-  
 }
