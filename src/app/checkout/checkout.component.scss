@@ -12,3 +12,23 @@ mat-stepper {
 ::ng-deep body {
     background-color: #F1FFFA;
 }
+
+mat-card {
+    cursor: pointer;
+    margin: 30px;
+    text-align: center;
+}
+
+img{
+    object-fit: cover; /*this makes the image in src fit to the size specified below*/
+    max-width: 80%; /* Here you can use wherever you want to specify the width and also the height of the <img>*/
+    aspect-ratio: 1/1;
+    margin: auto;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+h2 {
+    margin: auto;
+    text-align: center;
+}

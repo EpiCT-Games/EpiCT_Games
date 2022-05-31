@@ -33,6 +33,7 @@ import { DoneComponent } from './checkout/done/done.component';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatSelectCountryModule } from "@angular-material-extensions/select-country";
 import { HttpClientModule } from '@angular/common/http';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatStepperModule,
     MatSelectCountryModule.forRoot('pt'),
     HttpClientModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

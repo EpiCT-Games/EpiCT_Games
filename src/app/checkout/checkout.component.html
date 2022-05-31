@@ -8,6 +8,7 @@
                 <mat-form-field class="mx-auto" appearance="fill">
                     <mat-label>Nome</mat-label>
                     <input matInput placeholder="João Alberto Silva" formControlName="name" required>
+                    <mat-error *ngIf="name?.hasError('required')">Preencha o nome</mat-error>
                 </mat-form-field>
             </div>
 
@@ -15,6 +16,7 @@
                 <div class="col d-flex justify-content-center">
                     <mat-select-country class="mx-auto my-auto" appearance="fill"
                         label="País"
+                        (onCountrySelected)="onCountryChange($event)"
                         formControlName="country"
                         [required]="true">
                     </mat-select-country>
@@ -24,6 +26,7 @@
                     <mat-form-field class="mx-auto" appearance="fill">
                         <mat-label>Cidade/Estado</mat-label>
                         <input matInput placeholder="Lisboa" formControlName="city" required>
+                        <mat-error *ngIf="city?.hasError('required')">Escolha uma cidade</mat-error>
                     </mat-form-field>
                 </div>
             </div>
@@ -33,6 +36,7 @@
                     <mat-form-field class="mx-auto" appearance="fill">
                         <mat-label>Morada</mat-label>
                         <input matInput placeholder="Rua Principal Nº1 1ºEsq" formControlName="address" required>
+                        <mat-error *ngIf="address?.hasError('required')">Preencha a morada</mat-error>
                     </mat-form-field>
                 </div>
 
@@ -40,6 +44,7 @@
                     <mat-form-field class="mx-auto" appearance="fill">
                         <mat-label>Código de Postal</mat-label>
                         <input matInput placeholder="1000-001" formControlName="post_code" required>
+                        <mat-error *ngIf="post_code?.hasError('required')">Preencha a código de postal</mat-error>
                     </mat-form-field>
                 </div>
             </div>
@@ -48,7 +53,8 @@
                 <div class="col d-flex justify-content-center">
                     <mat-form-field class="mx-auto" appearance="fill">
                         <mat-label>NIF</mat-label>
-                        <input matInput formControlName="nif">
+                        <input matInput formControlName="nif" (input)="onNifInput()">
+                        <mat-error *ngIf="nif?.invalid && !nif?.hasError('required')">Formato errado</mat-error>
                     </mat-form-field>
                 </div>
                 
@@ -65,17 +71,71 @@
         <ng-template matStepLabel>Pagamento</ng-template>
         
         <div class="col">
-            <div class="row">
-                <mat-form-field appearance="fill">
-                    <mat-label>Address</mat-label>
-                    <input matInput placeholder="Ex. 1 Main St, New York, NY" formControlName="secondCtrl"
-                           required>
-                  </mat-form-field>
-            </div>
+            <mat-radio-group formControlName="payment" required>
+                <div class="row">
+                    <div class="col">
+                        <mat-card (click)="selectPayment('paypal')" [class.mat-elevation-z2]="!isActive1" [class.mat-elevation-z8]="isActive1"
+                            (mouseenter)="isActive1 = true" (mouseleave)="isActive1 = false">
+                            <mat-card-content>
+                                <img src="assets/img/paypal.png">
 
-            <button class="mr-3" mat-button matStepperPrevious><mat-icon>navigate_before</mat-icon> Anterior</button>
-            <button class="mx-3" mat-button matStepperNext>Próximo <mat-icon>navigate_next</mat-icon></button>
-        </div>
+                                <mat-divider></mat-divider>
+                            </mat-card-content>
+                            
+                            <h2>Paypal</h2>
+                            <mat-radio-button class="mt-2" color="primary" [checked]="checked1" [value]="'paypal'"></mat-radio-button>
+                        </mat-card>
+                    </div>
+
+                    <div class="col">
+                        <mat-card (click)="selectPayment('credit_card')" [class.mat-elevation-z2]="!isActive2" [class.mat-elevation-z8]="isActive2"
+                            (mouseenter)="isActive2 = true" (mouseleave)="isActive2 = false">
+                            <mat-card-content>
+                                <img src="assets/img/visa-master.png">
+
+                                <mat-divider></mat-divider>
+                            </mat-card-content>
+                            
+                            <h2>Cartão Crédito/Débito</h2> 
+                            <mat-radio-button class="mt-2" color="primary" [checked]="checked2" [value]="'card'"></mat-radio-button>
+                        </mat-card>
+                    </div>
+
+                    <div class="col">
+                        <mat-card (click)="selectPayment('mbway')" [class.mat-elevation-z2]="!isActive3" [class.mat-elevation-z8]="isActive3"
+                            (mouseenter)="isActive3 = true" (mouseleave)="isActive3 = false">
+                            <mat-card-content>
+                                <img src="assets/img/mbway.png">
+
+                                <mat-divider></mat-divider>
+                            </mat-card-content>
+                            
+                            <h2 >MB Way</h2>
+                            <mat-radio-button class="mt-2" color="primary" [checked]="checked3" [value]="'mbway'"></mat-radio-button>
+                        </mat-card>
+                    </div>
+                </div>
+            </mat-radio-group>
+
+            <div *ngIf="checked3" class="row">
+                <div class="col d-flex justify-content-center">
+                    <mat-form-field class="mx-auto my-auto" appearance="fill">
+                        <mat-label>Número de Telefone</mat-label>
+                        <input matInput formControlName="phone" (input)="onPhoneInput()">
+                        <mat-error *ngIf="phone?.hasError('required')">Preencha o número de telemóvel</mat-error>
+                        <mat-error *ngIf="phone?.invalid && !phone?.hasError('required')">Formato errado</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="col"></div>
+
+                <div class="col"></div>
+                
+            </div>
+            
+            <button class="mt-4 mr-3" mat-button matStepperPrevious><mat-icon>navigate_before</mat-icon> Anterior</button>
+            <button class="mt-4 mx-3" mat-button matStepperNext>Próximo <mat-icon>navigate_next</mat-icon></button>
+            </div>
       </form>
     </mat-step>
 
