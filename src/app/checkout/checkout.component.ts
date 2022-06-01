@@ -3,6 +3,9 @@ import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { product, SharedService } from '../shared.service';
 import { DoneComponent } from './done/done.component';
 
 @Component({
@@ -29,7 +32,34 @@ export class CheckoutComponent implements OnInit {
   checked2: boolean = false;
   checked3: boolean = false;
  
-  constructor(private _formBuilder: FormBuilder, public done_dialog: MatDialog) {}
+  cart: any = [];
+  cart_subscription: any = [];
+  subscription: Subscription = new Subscription();
+
+  constructor(private _formBuilder: FormBuilder, public done_dialog: MatDialog, private _router: Router, private _service: SharedService) {
+    this.subscription = this._service.cartOpened.subscribe((data: product[]) => {
+      var cart = data;
+      this.cart_subscription = data;
+
+      /* Get the qty of items */
+      cart.forEach((element: any) => {        
+        this.cart.push({ 
+          title: element.title,
+          key_price: element.key_price,
+          price: element.price,
+          type: element.type,
+          qty: cart.filter((v: any) => (v.title === element.title && v.type === element.type)).length
+        });
+      });
+
+      /* Remove duplicate values es6 magic */
+      this.cart = this.cart.filter((value: any, index: any, self: any) =>
+        index === self.findIndex((t: any) => (
+        t.place === value.place && t.title === value.title && t.type === value.type
+        ))
+      );
+    });
+  }
 
   ngOnInit() {
     this.infoForm = this._formBuilder.group({
@@ -39,7 +69,8 @@ export class CheckoutComponent implements OnInit {
       address: ['', Validators.required],
       post_code: ['', Validators.required],
       nif: [''],
-    }, {validator: nifValidator});
+    }, {validator: [nifValidator, postCodeValidator]});
+
     this.paymentForm = this._formBuilder.group({
       payment: ['', Validators.required],
       phone: [''],
@@ -70,25 +101,52 @@ export class CheckoutComponent implements OnInit {
       this.nif?.setErrors(null);
   }
 
+  /* Update validation when the post code input changes */
+  onPostCodeInput() {
+    if (this.infoForm.hasError('postCodeWrong'))
+      this.post_code?.setErrors([{'postCodeWrong': true}]);
+    else
+      this.post_code?.setErrors(null);
+  }
+
   /* Set the correct checked box and the correct payment info */
-  selectPayment(payment: string) {
+  selectPayment(payment: string, event: Event) {
+    event.preventDefault();
     this.payment = payment;
     this.paymentForm.get('payment')?.setValue(payment);
     
     if (payment == 'paypal') {
-      this.checked1 = true;
+      if (this.checked1) {
+        this.checked1 = false;
+        this.paymentForm.get('payment')?.setValue(null);
+      } else {
+        this.checked1 = true;
+      }
+
       this.checked2 = false;
       this.checked3 = false;
       this.paymentForm.get('phone')?.clearValidators();
     }
     if (payment == 'credit_card') {
-      this.checked2 = true;
+      if (this.checked2) {
+        this.checked2 = false;
+        this.paymentForm.get('payment')?.setValue(null);
+      } else {
+        this.checked2 = true;
+      }
+
       this.checked1 = false;
       this.checked3 = false;
       this.paymentForm.get('phone')?.clearValidators();
     }
     if (payment == 'mbway') {
-      this.checked3 = true;
+      if (this.checked3) {
+        this.checked3 = false;
+        this.paymentForm.get('payment')?.setValue(null);
+      } else {
+        this.checked3 = true;
+      }
+
       this.checked1 = false;
       this.checked2 = false;
       this.paymentForm.get('phone')?.setValidators(Validators.required);
@@ -98,13 +156,24 @@ export class CheckoutComponent implements OnInit {
   }
 
   checkoutDone() {
+    console.log(this.cart);
+
     const dialogRef = this.done_dialog.open(DoneComponent, {
-      width: '40%'
+      width: '40%',
+      height: '40%'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this._router.navigate(['/']);
+      this._service.openCartPage(null);
     });
   }
 
+  totalPriceProduct(qty: number, price: string) {
+    return String((qty * parseFloat(price.substring(0, price.length - 3).replace(/,/g, '.'))).toFixed(2)).replace('.', ',');
+  }
+
   onCountryChange(c: Country) {
-    console.log(c);
   }
 }
 
@@ -129,5 +198,26 @@ export const nifValidator: ValidatorFn = (formGroup: AbstractControl ): Validati
     return null;
   } else {
     return { nifWrong: true };
+  }
+}
+
+export const postCodeValidator: ValidatorFn = (formGroup: AbstractControl ): ValidationErrors | null  => {
+  var post_code: string = formGroup.get('post_code')?.value.replace(/\s/g, "");
+  var post_code_list = post_code.split("-");
+
+  if (post_code_list.length == 0) return null;
+
+  if (post_code_list.length == 2) {
+    if (post_code_list[0].length == 4 && !isNaN(Number(post_code_list[0]))) {
+      if (post_code_list[1].length == 3 && !isNaN(Number(post_code_list[1]))) {
+        return null;
+      } else {
+        return { postCodeWrong: true };
+      }
+    } else {
+      return { postCodeWrong: true };
+    }
+  } else {
+    return { postCodeWrong: true };
   }
 }
