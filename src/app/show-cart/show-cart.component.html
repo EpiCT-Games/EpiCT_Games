@@ -1,4 +1,4 @@
-<div class="row d-flex justify-content-center w-100 h-100">
+<div class="row d-flex justify-content-center w-100 h-90">
     <div class="col-1"></div>
 
     <div class="col">
@@ -42,7 +42,7 @@
     
             <div class="col h-100 my-auto d-flex">
                 <mat-form-field color="accent" appearance="outline">
-                    <input matInput type="text" value="{{item.qty}}">
+                    <input matInput type="number" (change)="changeQty(item, $event)" value="{{item.qty}}">
                 </mat-form-field>
             </div>
     
@@ -59,7 +59,7 @@
             </div>
         </div>
         
-        <div class="row d-flex my-3">
+        <div class="row d-flex mt-3 mb-5">
             <div class="col"></div>
     
             <div class="col-2 mx-2">
@@ -77,7 +77,7 @@
                 <div class="row h-50"><p>Total da Encomenda: {{totalPriceCart()}} €</p></div>
                 
                 <div class="row h-50">
-                    <button mat-raised-button color="primary" routerLink="/checkout">
+                    <button mat-raised-button [disabled]="cart.length == 0" color="primary" routerLink="/checkout">
                         Finalizar Compra
                         <mat-icon>done_all</mat-icon>
                     </button>

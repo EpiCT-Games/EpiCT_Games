@@ -29,7 +29,7 @@ export class ShowCartComponent implements OnInit {
           image: element.image,
           type: element.type,
           comments: element.comments,
-          platforms: element.platforms,
+          platform: element.platforms,
           qty: cart.filter((v: any) => (v.title === element.title && v.type === element.type)).length
         });
 
@@ -50,6 +50,38 @@ export class ShowCartComponent implements OnInit {
   /* To be deleted in the final version */
   resetCart() {
     this._service.openCartPage(null);
+
+    /* Reload the current component */
+    let currentUrl = this._router.url;
+    this._router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+        this._router.navigate([currentUrl]);
+    });
+  }
+
+  changeQty(product: any, event: Event) {
+    var new_qty: number = Number((event.target as HTMLInputElement).value);
+
+    if (new_qty >= 0) {
+      var old_qty: number = product.qty;
+
+      if (new_qty < old_qty) {
+        for (let i = 0; i < (old_qty - new_qty); i++) {
+          this.removeItem(product);
+        }
+      }
+
+      if (new_qty > old_qty) {
+        for (let i = 0; i < (new_qty - old_qty); i++) {
+          this.addItem(product);
+        }
+      }
+    }
+  }
+
+  addItem(product: any) {
+    this.cart_subscription.splice(0, 0, this.cart_subscription.find((p: any) => p.title == product.title && p.type == product.type));
+
+    this._service.updateCartPage(this.cart_subscription);
 
     /* Reload the current component */
     let currentUrl = this._router.url;
