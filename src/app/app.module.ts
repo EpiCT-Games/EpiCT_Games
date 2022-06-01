@@ -16,7 +16,6 @@ import { HomeComponent } from './home/home.component';
 import { ProductComponent } from './product/product.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { EventComponent } from './event/event.component';
-import { FooterComponent } from './footer/footer.component';
 import { ShowProductComponent } from './show-product/show-product.component';
 import { ShowEventComponent } from './show-event/show-event.component';
 import { MatBadgeModule } from '@angular/material/badge';
@@ -42,7 +41,6 @@ import { CreateEventComponent } from './create-event/create-event.component';
     HomeComponent,
     ProductComponent,
     EventComponent,
-    FooterComponent,
     ShowProductComponent,
     ShowEventComponent,
     ShowCartComponent,
