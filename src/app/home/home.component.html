@@ -41,14 +41,16 @@
             <p>Plataform</p>
         </div>
 
-        <div class="row">
-            <mat-checkbox class="my-2"><span>Steam</span></mat-checkbox>
-            <mat-checkbox class="my-2"><span>Origin</span></mat-checkbox>
-            <mat-checkbox class="my-2"><span>Epic Games</span></mat-checkbox>
-            <mat-checkbox class="my-2"><span>Battle.net</span></mat-checkbox>
-            <mat-checkbox class="my-2"><span>PlayStation</span></mat-checkbox>
-            <mat-checkbox class="my-2"><span>Xbox</span></mat-checkbox>
-            <mat-checkbox class="my-2"><span>Nintendo</span></mat-checkbox>
+        <div class="row" >
+            <form [formGroup]="filtros" >
+                <mat-checkbox formControlName="Steam" (change)="onSubmit()"  class="my-2"><span>Steam</span></mat-checkbox>
+                <mat-checkbox formControlName="Origin" (change)="onSubmit()" class="my-2"><span>Origin</span></mat-checkbox>
+                <mat-checkbox formControlName="Epic Games" (change)="onSubmit()" class="my-2"><span>Epic Games</span></mat-checkbox>
+                <mat-checkbox formControlName="Battle.net" (change)="onSubmit()" class="my-2"><span>Battle.net</span></mat-checkbox>
+                <mat-checkbox formControlName="PlayStation" (change)="onSubmit()" class="my-2"><span>PlayStation</span></mat-checkbox>
+                <mat-checkbox formControlName="Xbox" (change)="onSubmit()" class="my-2"><span>Xbox</span></mat-checkbox>
+                <mat-checkbox formControlName="Nintendo" (change)="onSubmit()" class="my-2"><span>Nintendo</span></mat-checkbox>
+            </form>
         </div>
 
         <mat-divider class="my-3"></mat-divider>

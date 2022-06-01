@@ -9,7 +9,7 @@ export interface product {
   description: string,
   image: any,
   comments: any[],
-  platforms: string[]
+  platform: string[]
 }
 
 export interface event {
