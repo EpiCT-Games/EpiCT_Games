@@ -34,6 +34,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatSelectCountryModule } from "@angular-material-extensions/select-country";
 import { HttpClientModule } from '@angular/common/http';
 import { MatRadioModule } from '@angular/material/radio';
+import { CreateEventComponent } from './create-event/create-event.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { MatRadioModule } from '@angular/material/radio';
     LoginComponent,
     RegisterComponent,
     CheckoutComponent,
-    DoneComponent
+    DoneComponent,
+    CreateEventComponent
   ],
   imports: [
     BrowserModule,
