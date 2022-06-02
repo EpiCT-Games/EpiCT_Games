@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { CreateEventComponent } from './create-event/create-event.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { SharedService } from './shared.service';
@@ -44,6 +45,12 @@ export class AppComponent {
   redirectLogin() {
     const dialogRef = this.dialog.open(LoginComponent, {
       width: '20%'
+    });
+  }
+
+  redirectCreateEvent() {
+    const dialogRef = this.dialog.open(CreateEventComponent, {
+      width: '50%'
     });
   }
 

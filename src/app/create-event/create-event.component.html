@@ -1,1 +1,88 @@
-<p>create-event works!</p>
+<div class="row mx-auto">
+    <h2 mat-dialog-title>Criar Evento</h2>
+</div>
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+        <div class="col">
+
+            <div class="row my-3 mx-auto">
+                <mat-form-field color="accent" appearance="outline">
+                    <mat-label>Nome do evento</mat-label>
+                    <input matInput placeholder="Nome do evento"formControlName="nome" required>
+                    <!-- <mat-error *ngIf="form.controls['nome'].invalid"></mat-error> -->
+                </mat-form-field>
+            </div>
+
+            <div class="row my-3 mx-auto">
+                <mat-form-field color="accent" appearance="outline">
+                    <mat-label>Localização</mat-label>
+                    <input matInput formControlName="localizacao" required>
+                    <!-- <mat-error *ngIf="form.controls['localizacao'].invalid"></mat-error> -->
+                </mat-form-field>
+            </div>
+
+            
+            <div class="row my-3 mx-auto">
+                <div class="col">
+                    <mat-form-field color="accent">
+                    <mat-label>Data do Evento</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="data" required>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <!-- <mat-error *ngIf="form.controls['bday'].invalid">Data introduzida inválida</mat-error> -->
+                    </mat-form-field>
+                </div>
+                
+                
+                <div class="col">
+                    <mat-form-field color="accent" appearance="outline" style="width:100%;">
+                        <mat-label>Hora</mat-label>
+                        <input matInput formControlName="hora" required>
+                        <!-- <mat-error *ngIf="form.controls['hora'].invalid"></mat-error> -->
+                    </mat-form-field>     
+                </div>
+
+            </div>
+
+            <div class="row my-3 mx-auto">
+
+                <mat-form-field color="accent" appearance="outline">
+                    <mat-label>Descrição</mat-label>
+                    <input matInput formControlName="descricao" required>
+                    <!-- <mat-error *ngIf="form.controls['descricao'].invalid"></mat-error> -->
+                </mat-form-field>
+
+            </div>
+
+            <div class="row my-3 mx-auto">
+                <mat-form-field color="accent" appearance="outline">
+                    <mat-label>Preço</mat-label>
+                    <input matInput formControlName="preço" required>
+                    <!-- <mat-error *ngIf="form.controls['preço'].invalid"></mat-error> -->
+                </mat-form-field>
+            </div>
+
+            <div class="row my-3 mx-auto">
+                <mat-form-field color="accent" appearance="outline">
+                    <mat-label>Jogo</mat-label>
+                    <mat-select formControlName="jogo">
+                        <mat-option *ngFor="let jogo of jogos" [value]="jogo">{{jogo.title}}</mat-option>
+                    </mat-select>
+                    <!-- <mat-error *ngIf="form.controls['jogo'].invalid"></mat-error> -->
+                </mat-form-field>
+            </div>
+
+            <!-- <div class="row my-3 mx-auto">
+                <mat-form-field color="accent" appearance="outline">
+                    <mat-label>Imagem</mat-label>
+                    <input matInput formControlName="imagem" placeholder="to Be done" required>
+                     <mat-error *ngIf="form.controls['preço'].invalid"></mat-error> 
+                </mat-form-field>
+            </div> -->
+            
+            <div class="row mt-4 mb-1 mx-auto">
+                <button mat-raised-button color="primary" type="submit">Entrar</button>
+            </div>
+        </div>
+    </form>
+</mat-dialog-content>

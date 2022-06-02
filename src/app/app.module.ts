@@ -36,6 +36,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { MatExpansionModule } from '@angular/material/expansion';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     HttpClientModule,
     MatRadioModule,
     CdkAccordionModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
