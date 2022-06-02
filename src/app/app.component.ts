@@ -31,6 +31,10 @@ export class AppComponent {
     this._service.setFilter(this.filterValue);
   }
 
+  search() {
+    this._router.navigate(['/']);
+  }
+
   /* Redirect to the home page */
   redirectHome() {
     this._router.navigate(['/home']);

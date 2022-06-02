@@ -12,9 +12,9 @@ import { FormGroup, FormControl, Validators,  ValidationErrors, ValidatorFn, Abs
 export class ShowProductComponent implements OnInit {
   product!: product;
   subscription : Subscription = new Subscription();
-  rateInt : number[] = [];
-  rateEmpty: any = [];
-  rateDouble : number = 0;
+  filledStar : number = 0;
+  halfStar: boolean = false;
+  emptyStar: number = 0;
   form!: FormGroup;
 
   constructor(private _formBuilder: FormBuilder,private _service: SharedService) {
@@ -36,8 +36,12 @@ export class ShowProductComponent implements OnInit {
   }
   
   calculateRate(){
-    this.rateInt = Array(Math.floor(Number(this.product?.rating))).fill(Math.floor(Number(this.product?.rating))); // [4,4,4,4,4]
-    this.rateDouble = Number(this.product?.rating) - this.rateInt.length;
+    this.filledStar = Math.floor(this.product?.rating);
+    this.halfStar = this.product?.rating - this.filledStar > 0;
+    this.emptyStar = 5 - this.filledStar - (this.halfStar ? 1 : 0);
+
+    //this.rateInt = Array(Math.floor(Number(this.product?.rating))).fill(Math.floor(Number(this.product?.rating))); // [4,4,4,4,4]
+    //this.rateDouble = Number(this.product?.rating) - this.rateInt.length;
     //this.rateEmpty = Array(5 - this.rateInt.length - this.rateDouble).fill(0); // [0,0,0,0,0]
   }
 
