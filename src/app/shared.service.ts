@@ -105,7 +105,7 @@ export class SharedService {
     {
       title: 'No Man\'s sky',
       key_price: '15,90 €',
-      price: '15,90 €',
+      price: '16,90 €',
       rating: 3.8,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
       image: '/assets/img/products/no_mans_sky.jpeg',
@@ -115,7 +115,7 @@ export class SharedService {
     {
       title: 'The Witcher III',
       key_price: '19,90 €',
-      price: '19,90 €',
+      price: '20,90 €',
       rating: 4.5,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
       image: '/assets/img/products/witcher3.jpeg',
@@ -135,7 +135,7 @@ export class SharedService {
     {
       title: 'Super Smash Bros',
       key_price: '32,99 €',
-      price: '32,99 €',
+      price: '39,99 €',
       rating: 4.1,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
       image: '/assets/img/products/super_smash_bros_ultimate.jpeg',

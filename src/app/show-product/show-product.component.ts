@@ -13,6 +13,7 @@ export class ShowProductComponent implements OnInit {
   product!: product;
   subscription : Subscription = new Subscription();
   rateInt : number[] = [];
+  rateEmpty: any = [];
   rateDouble : number = 0;
   form!: FormGroup;
 
@@ -37,6 +38,7 @@ export class ShowProductComponent implements OnInit {
   calculateRate(){
     this.rateInt = Array(Math.floor(Number(this.product?.rating))).fill(Math.floor(Number(this.product?.rating))); // [4,4,4,4,4]
     this.rateDouble = Number(this.product?.rating) - this.rateInt.length;
+    //this.rateEmpty = Array(5 - this.rateInt.length - this.rateDouble).fill(0); // [0,0,0,0,0]
   }
 
   refreshProducts(){

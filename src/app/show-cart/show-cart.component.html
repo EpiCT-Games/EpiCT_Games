@@ -37,7 +37,7 @@
             </div>
     
             <div class="col h-100 my-auto">
-                <p>{{item.key_price}}</p>
+                <p>{{item.type == 'key' ? item.key_price : item.price}}</p>
             </div>
     
             <div class="col h-100 my-auto d-flex">
