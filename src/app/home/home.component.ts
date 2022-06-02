@@ -42,12 +42,13 @@ export class HomeComponent implements OnInit {
       this.filterValue = data;
       if (this.filterValue !== '') {
         this.products = this._service.getProducts().filter((product: product) => product.title.toLowerCase().includes(this.filterValue.toLowerCase()));
+        this.events = this._service.getEvent().filter((event: any) => event.title.toLowerCase().includes(this.filterValue.toLowerCase()));
       } else {
         this.products = this._service.getProducts();
+        this.events = this._service.getEvent();
       }
     });
-
-    this.events = this._service.getEvent();
+    
     console.log(this.events);
 
     this.filtros = _formBuilder.group({
