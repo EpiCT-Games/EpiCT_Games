@@ -262,7 +262,7 @@ export class SharedService {
     }
 
     if (JSON.parse(localStorage.getItem('events')!) != this.events) {
-      localStorage.setItem('events', JSON.stringify(this.events));
+      localStorage.setItem('events', localStorage.getItem('events')!);
     }
     
     return JSON.parse(localStorage.getItem('events')!);

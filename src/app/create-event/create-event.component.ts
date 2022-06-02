@@ -4,6 +4,7 @@ import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/materia
 import { event, product, SharedService } from '../shared.service';
 import * as _moment from 'moment';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
+import { MatDialogRef } from '@angular/material/dialog';
 const moment = _moment;
 
 export const DATE_FORMAT = {
@@ -32,7 +33,7 @@ export class CreateEventComponent implements OnInit {
   
 
   jogos!: product[];
-  constructor(private _service: SharedService, private _form: FormBuilder) {
+  constructor(private _service: SharedService, private _form: FormBuilder, public dialog: MatDialogRef<CreateEventComponent>) {
     //get products
     
     this.form=_form.group({
@@ -49,8 +50,8 @@ export class CreateEventComponent implements OnInit {
 
   ngOnInit(): void {
     this.jogos = this._service.getProducts();
-
   }
+
   submit() {
     console.log(this.form.value);
     var event:event;
@@ -65,8 +66,7 @@ export class CreateEventComponent implements OnInit {
     }
 
     this._service.addEvent(event);
-    console.log(this._service.getEvent());
-    this.form.reset();
     
+    this.dialog.close();
   }
 }

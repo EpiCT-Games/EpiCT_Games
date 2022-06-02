@@ -47,6 +47,9 @@ export class HomeComponent implements OnInit {
       }
     });
 
+    this.events = this._service.getEvent();
+    console.log(this.events);
+
     this.filtros = _formBuilder.group({
         'Steam': false,
         'Origin': false,
@@ -60,43 +63,33 @@ export class HomeComponent implements OnInit {
   }
 
    //filter porducts
-    onSubmit() {
+  onSubmit() {
+    //get form values and filter set to true
+    let formValues = this.filtros.value;
+    let filterSet: string[] = [];
+    for (let key in formValues) {
+      if (formValues[key] === true) {
+        filterSet.push(key);
+      }
+    }
+    console.log(filterSet);
+
+    //filter products
     
-      //get form values and filter set to true
-      let formValues = this.filtros.value;
-      let filterSet: string[] = [];
-      for (let key in formValues) {
-        if (formValues[key] === true) {
-          filterSet.push(key);
+    this.products_filtered = this.products.filter((product: product) => {
+      let found: boolean = false;
+      for (let i = 0; i < filterSet.length; i++) {
+        //console.log(product.platform);
+        if (product.platform.includes(filterSet[i],0)) {
+          found = true;
+          break;
         }
       }
-      console.log(filterSet);
-
-      //filter products
-      
-      this.products_filtered = this.products.filter((product: product) => {
-        let found: boolean = false;
-        for (let i = 0; i < filterSet.length; i++) {
-          //console.log(product.platform);
-          if (product.platform.includes(filterSet[i],0)) {
-            found = true;
-            break;
-          }
-        }
-        return found;
-      });
-      
-      console.log(this.products_filtered);
-
-      // console.log(this.filtros.controls['Steam'].value);
-      // console.log(this.filtros.controls['Origin'].value);
-      // console.log(this.filtros.controls['Epic Games'].value);
-      // console.log(this.filtros.controls['EA'].value);
-      // console.log(this.filtros.controls['Battle.net'].value);
-      // console.log(this.filtros.controls['PlayStation'].value);
-      // console.log(this.filtros.controls['Xbox'].value);
-      // console.log(this.filtros.controls['Nintendo'].value);
-    }
+      return found;
+    });
+    
+    console.log(this.products_filtered);
+  }
 
 
   ngOnInit(): void {
