@@ -34,6 +34,8 @@ import { MatSelectCountryModule } from "@angular-material-extensions/select-coun
 import { HttpClientModule } from '@angular/common/http';
 import { MatRadioModule } from '@angular/material/radio';
 import { CreateEventComponent } from './create-event/create-event.component';
+import { CdkAccordionModule } from '@angular/cdk/accordion';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -73,7 +75,9 @@ import { CreateEventComponent } from './create-event/create-event.component';
     MatStepperModule,
     MatSelectCountryModule.forRoot('pt'),
     HttpClientModule,
-    MatRadioModule
+    MatRadioModule,
+    CdkAccordionModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

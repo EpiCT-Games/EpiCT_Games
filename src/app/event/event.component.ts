@@ -19,8 +19,8 @@ export class EventComponent implements OnInit {
 
   }
   /* Open the page with the product details */
-  open_game() {
-    this._router.navigate(['/product']);
+  open_event() {
+    this._router.navigate(['/product']);  // change navigation to future page of "/event"
     this._service.openProductPage(this.data);
   }
 

@@ -111,7 +111,7 @@ export class SharedService {
       platform: ['Steam', 'PC']
     },
     {
-      title: 'The Witcher 3',
+      title: 'The Witcher III',
       key_price: '19,90 €',
       price: '19,90 €',
       rating: 4.5,
@@ -139,17 +139,100 @@ export class SharedService {
       image: '/assets/img/products/super_smash_bros_ultimate.jpeg',
       comments: ['1', '2'],
       platform: ['Nintendo Switch']
+    },
+    {
+      title: 'Surviving Mars',
+      key_price: '4,99 €',
+      price: '6,99 €',
+      rating: 3.0,
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      image: '/assets/img/products/surviving.jpeg',
+      comments: ['1', '2'],
+      platform: ['Steam', 'PC']
+    },
+    {
+      title: 'Dead by Daylight',
+      key_price: '6,99 €',
+      price: '15,99 €',
+      rating: 4.4,
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      image: '/assets/img/products/dead_by_daylight.jpeg',
+      comments: ['1', '2', '3'],
+      platform: ['PC', 'Playstation', 'Xbox']
+    },
+    {
+      title: 'Cyberpunk 2077',
+      key_price: '15,90 €',
+      price: '48,99 €',
+      rating: 2.1,
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      image: '/assets/img/products/cyberpunk.jpeg',
+      comments: ['1'],
+      platform: ['PC', 'Playstation', 'Xbox']
+    },
+    {
+      title: 'Monster Hunter Rise',
+      key_price: '15,90 €',
+      price: '20,99 €',
+      rating: 3.3,
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      image: '/assets/img/products/monster_hunter_rise.jpeg',
+      comments: ['1'],
+      platform: ['PC', 'Nintendo Switch']
+    },
+    {
+      title: 'Genshin Impact',
+      key_price: '20,90 €',
+      price: '34,99 €',
+      rating: 4.3,
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      image: '/assets/img/products/genshin_impact.jpeg',
+      comments: ['1', '2'],
+      platform: ['PC', 'Playstation', 'Xbox']
     }
   ];
 
   events: event[] = [
     {
       title: 'DreamHack Masters Stockholm',
-      location: 'Stockholm, Sweden',
-      game: 'CS:GO',
+      location: 'Estocolmo, Suécia',
+      game: 'Counter-Strike: Global Offensive',
       start_date: '2022-06-01',
       end_date: '2022-06-02',
-      price: '100,00 €',
+      price: '250,00 €',
+      img: '/assets/img/events/dreamhack.jpg',
+    },
+
+    {
+      title: 'Liga Portuguesa: League of Legends',
+      location: 'Lisboa, Portugal',
+      game: 'League of Legends',
+      start_date: '2022-07-07',
+      end_date: '2022-07-09',
+      price: '15,00 €',
+      // change image here 
+      img: '/assets/img/events/dreamhack.jpg',
+    },
+
+    {
+      title: 'Rocket League Championship Series',
+      location: 'Dalas, EUA',
+      game: 'Rocket League',
+      start_date: '2022-10-20',
+      end_date: '2022-10-25',
+      price: '120,00 €',
+      // change image here 
+      img: '/assets/img/events/dreamhack.jpg',
+    },
+
+    {
+      title: 'IEM Rio Major 2022',
+      location: 'Rio de Janeiro, Brasil',
+      game: 'Counter Strike: Global Offensive',
+      start_date: '2022-10-31',
+      end_date: '2022-11-13',
+      price: '150,00 €',
+      // change image here 
       img: '/assets/img/events/dreamhack.jpg',
     }
   ]

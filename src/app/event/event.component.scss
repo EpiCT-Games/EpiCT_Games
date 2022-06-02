@@ -1,15 +1,23 @@
 mat-card {
     background-color: #09703e;
     cursor: pointer;
-    width: 85%;
-    height: 95%;
-    margin: 30px
+    width: 100%;
+    margin-right: 16px;
+    margin: 36px auto;
+    display: flex;
+    flex: 1;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: row;
 }
 
-mat-card img{
-    object-fit: fill; /*this makes the image in src fit to the size specified below*/
-    max-width: 50%; /* Here you can use wherever you want to specify the width and also the height of the <img>*/
-
-    margin-bottom: 10px;
+mat-card img {
+    object-fit: fill;
+    /*this makes the image in src fit to the size specified below*/
+    width: 100%;
+    aspect-ratio: 1;
+    /* Here you can use wherever you want to specify the width and also the height of the <img>*/
+    margin-bottom: 16px;
     border-radius: 5px;
+    margin-right: 5%;
 }

@@ -26,13 +26,13 @@
             <mat-checkbox class="my-2"><span>Estratégia</span></mat-checkbox>
             <mat-checkbox class="my-2"><span>Battle Royale</span></mat-checkbox>
             <button *ngIf="!categories_expanded" (click)="categories_expanded=true" mat-raised-button>Mostrar mais <mat-icon>expand_more</mat-icon></button>
-            
+
             <mat-checkbox *ngIf="categories_expanded" class="my-2"><span>Desporto</span></mat-checkbox>
             <mat-checkbox *ngIf="categories_expanded" class="my-2"><span>MMO</span></mat-checkbox>
             <mat-checkbox *ngIf="categories_expanded" class="my-2"><span>Corridas</span></mat-checkbox>
             <mat-checkbox *ngIf="categories_expanded" class="my-2"><span>Indie</span></mat-checkbox>
             <mat-checkbox *ngIf="categories_expanded" class="my-2"><span>Luta</span></mat-checkbox>
-            <button *ngIf="categories_expanded" (click)="categories_expanded=false" mat-raised-button>Mostrar menos <mat-icon>expand_less</mat-icon></button>          
+            <button *ngIf="categories_expanded" (click)="categories_expanded=false" mat-raised-button>Mostrar menos <mat-icon>expand_less</mat-icon></button>
         </div>
 
         <mat-divider class="my-3"></mat-divider>
@@ -41,9 +41,9 @@
             <p>Plataform</p>
         </div>
 
-        <div class="row" >
-            <form [formGroup]="filtros" >
-                <mat-checkbox formControlName="Steam" (change)="onSubmit()"  class="my-2"><span>Steam</span></mat-checkbox>
+        <div class="row">
+            <form [formGroup]="filtros">
+                <mat-checkbox formControlName="Steam" (change)="onSubmit()" class="my-2"><span>Steam</span></mat-checkbox>
                 <mat-checkbox formControlName="Origin" (change)="onSubmit()" class="my-2"><span>Origin</span></mat-checkbox>
                 <mat-checkbox formControlName="Epic Games" (change)="onSubmit()" class="my-2"><span>Epic Games</span></mat-checkbox>
                 <mat-checkbox formControlName="Battle.net" (change)="onSubmit()" class="my-2"><span>Battle.net</span></mat-checkbox>
@@ -67,7 +67,7 @@
             <mat-checkbox class="my-2"><span>PEGI 18</span></mat-checkbox>
         </div>
     </div>
-    
+
     <div class="col">
         <mat-tab-group mat-align-tabs="center">
             <mat-tab label="Games">
@@ -78,7 +78,7 @@
                 </mat-grid-list>
             </mat-tab>
             <mat-tab label="Events">
-                <mat-grid-list cols="1" rowHeight="6:1" [gutterSize]="'10px'">
+                <mat-grid-list cols="1" rowHeight="4:1" [gutterSize]="'10px'">
                     <mat-grid-tile *ngFor="let event of events">
                         <app-event [data]="event"></app-event>
                     </mat-grid-tile>
