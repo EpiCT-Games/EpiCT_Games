@@ -146,7 +146,7 @@ export class SharedService {
       price: '6,99 €',
       rating: 3.0,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      image: '/assets/img/products/surviving.jpeg',
+      image: '/assets/img/products/surviving_mars.jpeg',
       comments: ['1', '2'],
       platform: ['Steam', 'PC']
     },
@@ -166,7 +166,7 @@ export class SharedService {
       price: '48,99 €',
       rating: 2.1,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      image: '/assets/img/products/cyberpunk.jpeg',
+      image: '/assets/img/products/cyberpunk.jpg',
       comments: ['1'],
       platform: ['PC', 'Playstation', 'Xbox']
     },
@@ -176,7 +176,7 @@ export class SharedService {
       price: '20,99 €',
       rating: 3.3,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      image: '/assets/img/products/monster_hunter_rise.jpeg',
+      image: '/assets/img/products/monster_hunter_rise.jpg',
       comments: ['1'],
       platform: ['PC', 'Nintendo Switch']
     },
