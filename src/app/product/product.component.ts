@@ -25,6 +25,7 @@ export class ProductComponent implements OnInit {
 
   /* Add the selected item to the shopping cart */
   addCart() {
+    console.log(this.data);
     this.data.type = 'key';
     this._service.openCartPage(this.data);
   }

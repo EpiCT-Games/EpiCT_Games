@@ -44,7 +44,7 @@ export class SharedService {
   eventOpened = this.eventSource.asObservable();
 
   /* Initialize the cart_details information */
-  private cartSource = new BehaviorSubject<any>(localStorage.getItem('cart-page') ? JSON.parse(localStorage.getItem('cart-page')!) : JSON.parse('[]'));
+  private cartSource = new BehaviorSubject<any>(localStorage.getItem('cart-page') ? JSON.parse('[]') : JSON.parse(localStorage.getItem('cart-page')!));
   cartOpened = this.cartSource.asObservable();
 
   /* Initialize the cart_details information */
@@ -287,11 +287,15 @@ export class SharedService {
 
   /* Change the opened cart page information */
   openCartPage(cart: any) {
+    
+
     if (cart == null) {
       this.cartSource.next([]);
       localStorage.setItem('cart-page', JSON.stringify([]));
     } else {
-      var new_cart = JSON.parse(localStorage.getItem('cart-page')!);
+      var new_cart = JSON.parse(localStorage.getItem('cart-page')!) == null ? [] : JSON.parse(localStorage.getItem('cart-page')!);
+      console.log(new_cart);
+
       new_cart.push(cart);
 
       this.cartSource.next(new_cart);
