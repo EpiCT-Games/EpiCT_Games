@@ -58,6 +58,10 @@ export class ShowProductComponent implements OnInit {
     this._service.openCartPage(data);
   }
 
+  platforms(product: product) {
+    return product.platform.map(platform => platform).join(', ');
+  }
+
   addComment(){
     console.log("comentario");
     var products: product[] = this._service.getProducts();

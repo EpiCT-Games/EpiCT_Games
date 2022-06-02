@@ -1,28 +1,47 @@
 img {
+    padding: 0px;
     border: 5px;
     border-color: black;
     border-radius: 40px;
     border-style: solid;
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-bottom: 5%;
     object-fit: cover; /*this makes the image in src fit to the size specified below*/
-    width: 90%; /* Here you can use wherever you want to specify the width and also the height of the <img>*/
+    width: 80%; /* Here you can use wherever you want to specify the width and also the height of the <img>*/
     aspect-ratio: 1/1;
 }
 
+.mat-raised-button {
+    margin: auto;
+    width: 60%;
+}
 
-h2{
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: #fff; 
+}
+
+p {
+    font-size: 1.1rem;
+}
+
+b {
+    font-weight: 450;
+}
+
+mat-divider {
+    width: 95%;
+    margin-left: 2%;
+    border-top-width: 2px;
+    border-top-color: darkgrey;
+}
+
+#title {
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.price{
     text-align: center;
     margin-right: auto;
     font-size: 30px;
-}
-
-h3{
-    text-align: center;
-    font-weight: bold;
-    margin-right: auto;
-    font-size: 20px;
 }
 
 #comment{
@@ -32,26 +51,7 @@ h3{
     margin-top: 5%;
     width: 25rem;
     height: 9rem;
-    border-radius: 10px;
-    border-style: solid;
-    border-color: black;
     padding: 10px;
     font-size: 20px;
     word-break: break-all;
-    
-}
-
-#rating{
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-bottom: 5%;
-    // align header center
-    text-align: center;
-    width: 33.5rem;
-    height: 5rem;
-    border-radius: 10px;
-    border-style: solid;
-    border-color: black;
-    // padding: 10px;
-    font-size: 20px;
 }
