@@ -1,7 +1,7 @@
 mat-stepper {
     background-color: transparent;
-    margin-left: 10vw;
-    margin-right: 10vw;
+    margin-left: 1vw;
+    margin-right: 1vw;
 }
 
 ::ng-deep body {
@@ -35,4 +35,14 @@ p {
 b {
     font-size: 1.27rem;
     font-weight: 500;
+}
+
+.cart {
+    p {
+        font-size: 1rem
+    }
+    b {
+        font-size: 1.1rem;
+        font-weight: 500;
+    }
 }
