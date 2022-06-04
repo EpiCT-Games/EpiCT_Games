@@ -1,13 +1,22 @@
-::ng-deep body {
-    background-color: #F1FFFA;
-}
 
 .mat-tab-label {
     color: black;
 }
 
 .mat-raised-button {
-    background-color: #93B7BE;
-    width: 60%;
+    width: 65%;
     margin: auto;
+}
+
+#min-max-field {
+    width: 100px !important;
+}
+
+p {
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+
+h2 {
+    margin-bottom: 5px !important;
 }

@@ -9,7 +9,9 @@ export interface product {
   description: string,
   image: any,
   comments: any[],
-  platform: string[]
+  categories: string[],
+  platform: string[],
+  pegi: string
 }
 
 export interface event {
@@ -60,7 +62,9 @@ export class SharedService {
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
       image: '/assets/img/products/rocket_league.jpeg',
       comments: ['1', '2'],
-      platform: ['Steam', 'Origin', 'Xbox', 'Playstation']
+      platform: ['Steam', 'Origin', 'Xbox', 'Playstation'],
+      categories: ['Desporto'],
+      pegi: 'PEGI 3'
     },
     {
       title: 'Fortnite',
@@ -70,7 +74,9 @@ export class SharedService {
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
       image: '/assets/img/products/fortnite.jpeg',
       comments: ['1', '2'],
-      platform: ['Epic Games', 'Xbox', 'Playstation']
+      platform: ['Epic Games', 'Xbox', 'Playstation'],
+      categories: ['Ação', 'FPS', 'Battle Royale'],
+      pegi: 'PEGI 12'
     },
     {
       title: 'Overwatch',
@@ -80,7 +86,9 @@ export class SharedService {
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
       image: '/assets/img/products/overwatch.jpeg',
       comments: ['1', '2'],
-      platform: ['Battle.net', 'Steam', 'Playstation']
+      platform: ['Battlenet', 'Steam', 'Playstation'],
+      categories: ['Ação', 'FPS'],
+      pegi: 'PEGI 12'
     },
     {
       title: 'FIFA 22',
@@ -90,7 +98,9 @@ export class SharedService {
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
       image: '/assets/img/products/fifa22.jpeg',
       comments: ['1', '2'],
-      platform: ['EA', 'Steam', 'Playstation']
+      platform: ['EA', 'Steam', 'Playstation'],
+      categories: ['Desporto'],
+      pegi: 'PEGI 3'
     },
     {
       title: 'Minecraft Java Edition',
@@ -100,7 +110,9 @@ export class SharedService {
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
       image: '/assets/img/products/minecraft.jpeg',
       comments: ['1', '2'],
-      platform: ['Steam', 'PC']
+      platform: ['Steam', 'PC'],
+      categories: ['Ação', 'Aventura', 'FPS'],
+      pegi: 'PEGI 7'
     },
     {
       title: 'No Man\'s sky',
@@ -110,7 +122,9 @@ export class SharedService {
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
       image: '/assets/img/products/no_mans_sky.jpeg',
       comments: ['1', '2'],
-      platform: ['Steam', 'PC']
+      platform: ['Steam', 'PC'],
+      categories: ['Ação', 'FPS'],
+      pegi: 'PEGI 7'
     },
     {
       title: 'The Witcher III',
@@ -120,7 +134,9 @@ export class SharedService {
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
       image: '/assets/img/products/witcher3.jpeg',
       comments: ['1', '2'],
-      platform: ['Steam', 'PC', 'Playstation', 'Xbox']
+      platform: ['Steam', 'PC', 'Playstation', 'Xbox'],
+      categories: ['RPG'],
+      pegi: 'PEGI 16'
     },
     {
       title: 'LEGO Star Wars',
@@ -130,7 +146,9 @@ export class SharedService {
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
       image: '/assets/img/products/lego_starwars.jpeg',
       comments: ['1', '2'],
-      platform: ['Steam', 'PC', 'Playstation', 'Xbox']
+      platform: ['Steam', 'PC', 'Playstation', 'Xbox'],
+      categories: ['Ação', 'Aventura'],
+      pegi: 'PEGI 7'
     },
     {
       title: 'Super Smash Bros',
@@ -140,7 +158,9 @@ export class SharedService {
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
       image: '/assets/img/products/super_smash_bros_ultimate.jpeg',
       comments: ['1', '2'],
-      platform: ['Nintendo Switch']
+      platform: ['Nintendo'],
+      categories: ['Luta'],
+      pegi: 'PEGI 12'
     },
     {
       title: 'Surviving Mars',
@@ -150,7 +170,9 @@ export class SharedService {
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
       image: '/assets/img/products/surviving_mars.jpeg',
       comments: ['1', '2'],
-      platform: ['Steam', 'PC']
+      platform: ['Steam', 'PC'],
+      categories: ['Indie'],
+      pegi: 'PEGI 12'
     },
     {
       title: 'Dead by Daylight',
@@ -160,7 +182,9 @@ export class SharedService {
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
       image: '/assets/img/products/dead_by_daylight.jpeg',
       comments: ['1', '2', '3'],
-      platform: ['PC', 'Playstation', 'Xbox']
+      platform: ['PC', 'Playstation', 'Xbox'],
+      categories: ['Ação'],
+      pegi: 'PEGI 18'
     },
     {
       title: 'Cyberpunk 2077',
@@ -170,7 +194,9 @@ export class SharedService {
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
       image: '/assets/img/products/cyberpunk.jpg',
       comments: ['1'],
-      platform: ['PC', 'Playstation', 'Xbox']
+      platform: ['PC', 'Playstation', 'Xbox'],
+      categories: ['Ação', 'RPG'],
+      pegi: 'PEGI 18'
     },
     {
       title: 'Monster Hunter Rise',
@@ -180,7 +206,9 @@ export class SharedService {
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
       image: '/assets/img/products/monster_hunter_rise.jpg',
       comments: ['1'],
-      platform: ['PC', 'Nintendo Switch']
+      platform: ['PC', 'Nintendo'],
+      categories: ['Ação', 'RPG'],
+      pegi: 'PEGI 12'
     },
     {
       title: 'Genshin Impact',
@@ -190,7 +218,9 @@ export class SharedService {
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
       image: '/assets/img/products/genshin_impact.jpeg',
       comments: ['1', '2'],
-      platform: ['PC', 'Playstation', 'Xbox']
+      platform: ['PC', 'Playstation', 'Xbox'],
+      categories: ['Ação', 'RPG'],
+      pegi: 'PEGI 12'
     }
   ];
 
@@ -287,8 +317,6 @@ export class SharedService {
 
   /* Change the opened cart page information */
   openCartPage(cart: any) {
-    
-
     if (cart == null) {
       this.cartSource.next([]);
       localStorage.setItem('cart-page', JSON.stringify([]));

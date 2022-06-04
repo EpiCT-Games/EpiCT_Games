@@ -1,70 +1,88 @@
 <div class="row w-100 h-100">
-    <div class="col-2" style="margin-left: 30px;">
+    <div class="col-2 mb-4" style="margin-left: 30px;">
+        <div class="row mt-5">
+            <h2>Preço</h2>
+        </div>
+
+        <div class="row mt-3">
+            <form [formGroup]="priceRange">
+                <div class="row"> 
+                    <div class="col">
+                        <mat-form-field id="min-max-field" appearance="fill">
+                            <input type="text" matInput (input)="onPriceInput()" formControlName="min" placeholder="Min.">
+                            <span matSuffix>€ &nbsp;</span>
+                            <mat-error *ngIf="min?.invalid && !min?.hasError('required')">Preço inválido</mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col">
+                        <mat-form-field id="min-max-field" appearance="fill">
+                            <input type="text" matInput (input)="onPriceInput()" formControlName="max" placeholder="Máx.">
+                            <span matSuffix>€ &nbsp;</span>
+                            <mat-error *ngIf="max?.invalid && !max?.hasError('required')">Preço inválido</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <mat-divider class="mb-3 mt-1"></mat-divider>
+
         <div class="row">
-            <p>Filtros</p>
+            <h2>Categorias</h2>
         </div>
 
         <div class="row">
-            <p>Preço</p>
-        </div>
+            <form [formGroup]="categorias">
+                <p><mat-checkbox formControlName="acao" color="primary" class="my-2"><span>Ação</span></mat-checkbox></p>
+                <p><mat-checkbox formControlName="aventura" color="primary" class="my-2"><span>Aventura</span></mat-checkbox></p>
+                <p><mat-checkbox formControlName="fps" color="primary" class="my-2"><span>FPS</span></mat-checkbox></p>
+                <p><mat-checkbox formControlName="rpg" color="primary" class="my-2"><span>RPG</span></mat-checkbox></p>
+                <p><mat-checkbox formControlName="estrategia" color="primary" class="my-2"><span>Estratégia</span></mat-checkbox></p>
+                <p><mat-checkbox formControlName="battleroyale" color="primary" class="my-2"><span>Battle Royale</span></mat-checkbox></p>
+                <div class="row mx-auto mt-2" *ngIf="!categories_expanded"><button (click)="categories_expanded=true" color="accent" mat-raised-button>Mostrar mais <mat-icon>expand_more</mat-icon></button></div>
 
-        <div class="row">
-            <ngx-slider class="custom-slider" [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ngx-slider>
-        </div>
-
-        <mat-divider class="my-3"></mat-divider>
-
-        <div class="row">
-            <p>Categorias</p>
-        </div>
-
-        <div class="row">
-            <mat-checkbox class="my-2"><span>Ação</span></mat-checkbox>
-            <mat-checkbox class="my-2"><span>Aventura</span></mat-checkbox>
-            <mat-checkbox class="my-2"><span>FPS</span></mat-checkbox>
-            <mat-checkbox class="my-2"><span>RPG</span></mat-checkbox>
-            <mat-checkbox class="my-2"><span>Estratégia</span></mat-checkbox>
-            <mat-checkbox class="my-2"><span>Battle Royale</span></mat-checkbox>
-            <button *ngIf="!categories_expanded" (click)="categories_expanded=true" mat-raised-button>Mostrar mais <mat-icon>expand_more</mat-icon></button>
-
-            <mat-checkbox *ngIf="categories_expanded" class="my-2"><span>Desporto</span></mat-checkbox>
-            <mat-checkbox *ngIf="categories_expanded" class="my-2"><span>MMO</span></mat-checkbox>
-            <mat-checkbox *ngIf="categories_expanded" class="my-2"><span>Corridas</span></mat-checkbox>
-            <mat-checkbox *ngIf="categories_expanded" class="my-2"><span>Indie</span></mat-checkbox>
-            <mat-checkbox *ngIf="categories_expanded" class="my-2"><span>Luta</span></mat-checkbox>
-            <button *ngIf="categories_expanded" (click)="categories_expanded=false" mat-raised-button>Mostrar menos <mat-icon>expand_less</mat-icon></button>
-        </div>
-
-        <mat-divider class="my-3"></mat-divider>
-
-        <div class="row">
-            <p>Plataform</p>
-        </div>
-
-        <div class="row">
-            <form [formGroup]="filtros">
-                <mat-checkbox formControlName="Steam" (change)="onSubmit()" class="my-2"><span>Steam</span></mat-checkbox>
-                <mat-checkbox formControlName="Origin" (change)="onSubmit()" class="my-2"><span>Origin</span></mat-checkbox>
-                <mat-checkbox formControlName="Epic Games" (change)="onSubmit()" class="my-2"><span>Epic Games</span></mat-checkbox>
-                <mat-checkbox formControlName="Battle.net" (change)="onSubmit()" class="my-2"><span>Battle.net</span></mat-checkbox>
-                <mat-checkbox formControlName="PlayStation" (change)="onSubmit()" class="my-2"><span>PlayStation</span></mat-checkbox>
-                <mat-checkbox formControlName="Xbox" (change)="onSubmit()" class="my-2"><span>Xbox</span></mat-checkbox>
-                <mat-checkbox formControlName="Nintendo" (change)="onSubmit()" class="my-2"><span>Nintendo</span></mat-checkbox>
+                <p><mat-checkbox formControlName="desporto" color="primary" *ngIf="categories_expanded" class="my-2"><span>Desporto</span></mat-checkbox></p>
+                <p><mat-checkbox formControlName="mmo" color="primary" *ngIf="categories_expanded" class="my-2"><span>MMO</span></mat-checkbox></p>
+                <p><mat-checkbox formControlName="corridas" color="primary" *ngIf="categories_expanded" class="my-2"><span>Corridas</span></mat-checkbox></p>
+                <p><mat-checkbox formControlName="indie" color="primary" *ngIf="categories_expanded" class="my-2"><span>Indie</span></mat-checkbox></p>
+                <p><mat-checkbox formControlName="luta" color="primary" *ngIf="categories_expanded" class="my-2"><span>Luta</span></mat-checkbox></p>
+                <div class="row mx-auto mt-2" *ngIf="categories_expanded"><button (click)="categories_expanded=false" color="accent" mat-raised-button>Mostrar menos <mat-icon>expand_less</mat-icon></button></div>
             </form>
         </div>
 
         <mat-divider class="my-3"></mat-divider>
 
         <div class="row">
-            <p>Restrição de Idade</p>
+            <h2>Plataform</h2>
         </div>
 
         <div class="row">
-            <mat-checkbox class="my-2"><span>PEGI 3</span></mat-checkbox>
-            <mat-checkbox class="my-2"><span>PEGI 7</span></mat-checkbox>
-            <mat-checkbox class="my-2"><span>PEGI 12</span></mat-checkbox>
-            <mat-checkbox class="my-2"><span>PEGI 16</span></mat-checkbox>
-            <mat-checkbox class="my-2"><span>PEGI 18</span></mat-checkbox>
+            <form [formGroup]="filtros">
+                <p><mat-checkbox formControlName="Steam" color="primary" class="my-2"><span>Steam</span></mat-checkbox></p>
+                <p><mat-checkbox formControlName="Origin" color="primary" class="my-2"><span>Origin</span></mat-checkbox></p>
+                <p><mat-checkbox formControlName="Epic Games" color="primary" class="my-2"><span>Epic Games</span></mat-checkbox></p>
+                <p><mat-checkbox formControlName="Battlenet" color="primary" class="my-2"><span>Battle.net</span></mat-checkbox></p>
+                <p><mat-checkbox formControlName="Playstation" color="primary" class="my-2"><span>PlayStation</span></mat-checkbox></p>
+                <p><mat-checkbox formControlName="Xbox" color="primary" class="my-2"><span>Xbox</span></mat-checkbox></p>
+                <p><mat-checkbox formControlName="Nintendo" color="primary" class="my-2"><span>Nintendo</span></mat-checkbox></p>
+            </form>
+        </div>
+
+        <mat-divider class="my-3"></mat-divider>
+
+        <div class="row">
+            <h2>Restrição de Idade</h2>
+        </div>
+
+        <div class="row">
+            <form [formGroup]="pegi">
+                <p><mat-checkbox formControlName="pegi3" color="primary" class="my-2"><span>PEGI 3</span></mat-checkbox></p>
+                <p><mat-checkbox formControlName="pegi7" color="primary" class="my-2"><span>PEGI 7</span></mat-checkbox></p>
+                <p><mat-checkbox formControlName="pegi12" color="primary" class="my-2"><span>PEGI 12</span></mat-checkbox></p>
+                <p><mat-checkbox formControlName="pegi16"  color="primary" class="my-2"><span>PEGI 16</span></mat-checkbox></p>
+                <p><mat-checkbox formControlName="pegi18" color="primary" class="my-2"><span>PEGI 18</span></mat-checkbox></p>
+            </form>
         </div>
     </div>
 

@@ -22,7 +22,11 @@ export class AppComponent {
 
   ngOnInit() {
     this.subscription = this._service.cartOpened.subscribe((data: any) => {
-      this.cart_number = data.length;
+      if (data == null) {
+        this.cart_number = 0;
+      } else {
+        this.cart_number = data.length;
+      }
     });
   }
 

@@ -25,7 +25,6 @@ import { RegisterComponent } from './register/register.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { DoneComponent } from './checkout/done/done.component';
@@ -36,9 +35,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { MatExpansionModule } from '@angular/material/expansion';
-import {MatSelectModule} from '@angular/material/select';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
-
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -73,7 +71,6 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     FormsModule,
     ReactiveFormsModule,
     MatDatepickerModule,
-    NgxSliderModule,
     MatCheckboxModule,
     MatStepperModule,
     MatSelectCountryModule.forRoot('pt'),

@@ -39,10 +39,6 @@ export class ShowProductComponent implements OnInit {
     this.filledStar = Math.floor(this.product?.rating);
     this.halfStar = this.product?.rating - this.filledStar > 0;
     this.emptyStar = 5 - this.filledStar - (this.halfStar ? 1 : 0);
-
-    //this.rateInt = Array(Math.floor(Number(this.product?.rating))).fill(Math.floor(Number(this.product?.rating))); // [4,4,4,4,4]
-    //this.rateDouble = Number(this.product?.rating) - this.rateInt.length;
-    //this.rateEmpty = Array(5 - this.rateInt.length - this.rateDouble).fill(0); // [0,0,0,0,0]
   }
 
   refreshProducts(){
@@ -66,6 +62,10 @@ export class ShowProductComponent implements OnInit {
 
   platforms(product: product) {
     return product.platform.map(platform => platform).join(', ');
+  }
+
+  categories(product: product) {
+    return product.categories.map(category => category).join(', ');
   }
 
   addComment(){
