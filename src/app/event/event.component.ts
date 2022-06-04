@@ -26,6 +26,7 @@ export class EventComponent implements OnInit {
 
   /* Add the selected item to the shopping cart */
   addCart() {
+    this.data.type = 'Bilhete';
     this._service.openCartPage(this.data);
   }
 }

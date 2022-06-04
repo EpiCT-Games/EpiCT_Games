@@ -42,16 +42,6 @@
                     </mat-form-field>
                 </div>
                 
-                <!-- <div class="col">
-                    <mat-form-field color="accent">
-                    <mat-label>Data do Evento</mat-label>
-                    <input matInput [matDatepicker]="picker2" formControlName="dataF" required>
-                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-                    <mat-datepicker #picker2></mat-datepicker>
-                    <mat-error *ngIf="form.controls['bday'].invalid">Data introduzida inválida</mat-error> 
-                    </mat-form-field>
-                </div> -->
-
                 <div class="col">
                     <mat-form-field color="accent" appearance="outline" style="width:100%;">
                         <mat-label>Hora</mat-label>
@@ -66,22 +56,25 @@
 
             <div class="row my-3 mx-auto">
 
-                <mat-form-field color="accent" appearance="outline">
-                    <mat-label>Descrição</mat-label>
-                    <input matInput formControlName="descricao" required>
-                    <mat-error *ngIf="descricao?.hasError('required')">Defina uma descriçao</mat-error>
-                    <mat-error *ngIf="form.controls['descricao'].invalid && !descricao?.hasError('required')">Insira uma descrição válida</mat-error>
-                </mat-form-field>
+                <div class="col">
+                    <mat-form-field color="accent" appearance="outline">
+                        <mat-label>Descrição</mat-label>
+                        <input matInput formControlName="descricao" required>
+                        <mat-error *ngIf="descricao?.hasError('required')">Defina uma descriçao</mat-error>
+                        <mat-error *ngIf="form.controls['descricao'].invalid && !descricao?.hasError('required')">Insira uma descrição válida</mat-error>
+                    </mat-form-field>
+                    
+                </div>
 
-            </div>
+                <div class="col">
+                    <mat-form-field color="accent" appearance="outline">
+                        <mat-label>Preço para participante</mat-label>
+                        <input matInput formControlName="preço" required>
+                        <mat-error *ngIf="preco?.hasError('required')">Defina um preço de entrada</mat-error>
+                        <mat-error *ngIf="form.controls['preço'].invalid && !preco?.hasError('required')">Preço invalido</mat-error>
+                    </mat-form-field>
+                </div>
 
-            <div class="row my-3 mx-auto">
-                <mat-form-field color="accent" appearance="outline">
-                    <mat-label>Preço</mat-label>
-                    <input matInput formControlName="preço" required>
-                    <mat-error *ngIf="preco?.hasError('required')">Defina um preço</mat-error>
-                    <mat-error *ngIf="form.controls['preço'].invalid && !preco?.hasError('required')">Preço invalido</mat-error>
-                </mat-form-field>
             </div>
 
             <div class="row my-3 mx-auto">
