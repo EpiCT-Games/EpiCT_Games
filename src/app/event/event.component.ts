@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { event,SharedService } from '../shared.service';
+import { event,product,SharedService } from '../shared.service';
 
 @Component({
   selector: 'app-event',
@@ -26,7 +26,21 @@ export class EventComponent implements OnInit {
 
   /* Add the selected item to the shopping cart */
   addCart() {
-    this.data.type = 'Bilhete';
-    this._service.openCartPage(this.data);
+    var event_product: any = {
+      title: this.data.title,
+      key_price: this.data.price,
+      price: null,
+      image: this.data.img,
+      rating: 0,
+      description: "",
+      comments: [],
+      categories: [""],
+      platform: [""],
+      pegi: ""
+    }
+    
+    event_product.type = 'ticket';
+    console.log(event_product);
+    this._service.openCartPage(event_product);
   }
 }

@@ -169,11 +169,42 @@ export class CheckoutComponent implements OnInit {
     });
   }
 
-  totalPriceProduct(qty: number, price: string) {
+  productPrice(product: any) {
+    if (product.type == 'key' || product.type == 'ticket') {
+      return product.key_price;
+    } else {
+      return product.price;
+    }
+  }
+
+  productType(product: any) {
+    if (product.type == 'key') return 'Chave';
+    if (product.type == 'ticket') return 'Bilhete';
+    if (product.type == 'CD') return 'CD-ROM';
+
+    return null
+  }
+
+  totalPriceProduct(product: any) {
+    var qty: number = product.qty;
+    var price: string = this.productPrice(product);
+
     return String((qty * parseFloat(price.substring(0, price.length - 3).replace(/,/g, '.'))).toFixed(2)).replace('.', ',');
   }
 
   onCountryChange(c: Country) {
+  }
+
+  totalPriceCart() {
+    var total = 0;
+    this.cart.forEach((element: any) => {
+      if (element.type == 'key' || element.type == 'ticket') {
+        total += element.qty * parseFloat(element.key_price.substring(0, element.key_price.length - 3).replace(/,/g, '.'));
+      } else {
+        total += element.qty * parseFloat(element.price.substring(0, element.price.length - 3).replace(/,/g, '.'));
+      }
+    });
+    return String(total.toFixed(2)).replace('.', ',');
   }
 }
 

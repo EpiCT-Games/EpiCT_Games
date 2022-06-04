@@ -33,11 +33,11 @@
             </div>
 
             <div class="col h-100 my-auto">
-                <p>{{item.type == 'key' ? 'Chave' : 'CD-ROM'}}</p>
+                <p>{{productPrice(item)}}</p>
             </div>
     
             <div class="col h-100 my-auto">
-                <p>{{item.type == 'key' ? item.key_price : item.price}}</p>
+                <p>{{productType(item)}}</p>
             </div>
     
             <div class="col h-100 my-auto d-flex">

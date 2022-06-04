@@ -172,12 +172,18 @@
             </div>
     
             <div class="col">
-                <p>{{prod.title}} - {{prod.type == 'key' ? 'Chave Digital' : 'CD-ROM'}}</p>
+                <p>{{prod.title}} - {{productType(prod)}}</p>
             </div>
     
-            <div class="col-2">
-                <p>{{prod.type == 'key' ? totalPriceProduct(prod.qty, prod.key_price) + '€' : totalPriceProduct(prod.qty, prod.price) + '€'}} </p>
+            <div class="col-3">
+                <p>{{totalPriceProduct(prod) + ' €'}} </p>
             </div>
+        </div>
+        <div class="row my-2">
+            <div class="col-2"></div>
+            <div class="col"><p>Total da encomenda</p></div>
+
+            <div class="col-3"><p>{{totalPriceCart() + ' €'}}</p></div>
         </div>
     </div>    
 </div>
