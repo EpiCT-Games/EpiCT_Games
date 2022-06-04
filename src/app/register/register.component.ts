@@ -71,7 +71,7 @@ export class RegisterComponent implements OnInit {
   submit() {
     /* Only submit if the form is valid */
     if (this.form.valid) {
-      
+      console.log(this.form.value);
     }
   }
 }

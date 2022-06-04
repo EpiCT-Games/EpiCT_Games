@@ -37,6 +37,8 @@ import { CreateEventComponent } from './create-event/create-event.component';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { MatExpansionModule } from '@angular/material/expansion';
 import {MatSelectModule} from '@angular/material/select';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+
 
 @NgModule({
   declarations: [
@@ -80,6 +82,7 @@ import {MatSelectModule} from '@angular/material/select';
     CdkAccordionModule,
     MatExpansionModule,
     MatSelectModule,
+    MatAutocompleteModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

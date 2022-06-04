@@ -9,7 +9,8 @@
                 <mat-form-field color="accent" appearance="outline">
                     <mat-label>Nome do evento</mat-label>
                     <input matInput placeholder="Nome do evento"formControlName="nome" required>
-                    <!-- <mat-error *ngIf="form.controls['nome'].invalid"></mat-error> -->
+                    <mat-error *ngIf="nome?.hasError('required')">Defina um Titulo</mat-error>
+                    <mat-error *ngIf="form.controls['nome'].invalid && !nome?.hasError('required')">Insira um Titulo do Evento válido</mat-error>
                 </mat-form-field>
             </div>
 
@@ -17,7 +18,8 @@
                 <mat-form-field color="accent" appearance="outline">
                     <mat-label>Localização</mat-label>
                     <input matInput formControlName="localizacao" required>
-                    <!-- <mat-error *ngIf="form.controls['localizacao'].invalid"></mat-error> -->
+                    <mat-error *ngIf="localizacao?.hasError('required')">Defina uma locailzação</mat-error>
+                    <mat-error *ngIf="form.controls['localizacao'].invalid && !localizacao?.hasError('required')">Insira uma Localização válida</mat-error>
                 </mat-form-field>
             </div>
 
@@ -26,19 +28,37 @@
                 <div class="col">
                     <mat-form-field color="accent">
                     <mat-label>Data do Evento</mat-label>
-                    <input matInput [matDatepicker]="picker" formControlName="data" required>
+                    <mat-date-range-input [rangePicker]="picker">
+                        <input matStartDate formControlName="dataI" placeholder="Start date">
+                        <input matEndDate formControlName="dataF" placeholder="End date">
+                    </mat-date-range-input>
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-                    <!-- <mat-error *ngIf="form.controls['bday'].invalid">Data introduzida inválida</mat-error> -->
+                    <mat-date-range-picker #picker></mat-date-range-picker>
+                    <mat-error *ngIf="dataI?.hasError('required')">Defina uma data de inicio</mat-error>
+                    <mat-error *ngIf="dataF?.hasError('required')">Defina uma data de término</mat-error>
+                    <mat-error *ngIf="form.controls['dataI'].invalid && !dataI?.hasError('required')">Insira uma data de inicio válida</mat-error>
+                    <mat-error *ngIf="form.controls['dataF'].invalid && !dataF?.hasError('required')">Insira uma data de término válida</mat-error>
+
                     </mat-form-field>
                 </div>
                 
-                
+                <!-- <div class="col">
+                    <mat-form-field color="accent">
+                    <mat-label>Data do Evento</mat-label>
+                    <input matInput [matDatepicker]="picker2" formControlName="dataF" required>
+                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker #picker2></mat-datepicker>
+                    <mat-error *ngIf="form.controls['bday'].invalid">Data introduzida inválida</mat-error> 
+                    </mat-form-field>
+                </div> -->
+
                 <div class="col">
                     <mat-form-field color="accent" appearance="outline" style="width:100%;">
                         <mat-label>Hora</mat-label>
                         <input matInput formControlName="hora" required>
-                        <!-- <mat-error *ngIf="form.controls['hora'].invalid"></mat-error> -->
+                        <mat-hint>HH:MM</mat-hint>
+                        <mat-error *ngIf="hora?.hasError('required')">Defina uma hora</mat-error>
+                        <mat-error *ngIf="form.controls['hora'].invalid && !hora?.hasError('required')">Introduza uma hora válida</mat-error>
                     </mat-form-field>     
                 </div>
 
@@ -49,7 +69,8 @@
                 <mat-form-field color="accent" appearance="outline">
                     <mat-label>Descrição</mat-label>
                     <input matInput formControlName="descricao" required>
-                    <!-- <mat-error *ngIf="form.controls['descricao'].invalid"></mat-error> -->
+                    <mat-error *ngIf="descricao?.hasError('required')">Defina uma descriçao</mat-error>
+                    <mat-error *ngIf="form.controls['descricao'].invalid && !descricao?.hasError('required')">Insira uma descrição válida</mat-error>
                 </mat-form-field>
 
             </div>
@@ -58,27 +79,29 @@
                 <mat-form-field color="accent" appearance="outline">
                     <mat-label>Preço</mat-label>
                     <input matInput formControlName="preço" required>
-                    <!-- <mat-error *ngIf="form.controls['preço'].invalid"></mat-error> -->
+                    <mat-error *ngIf="preco?.hasError('required')">Defina um preço</mat-error>
+                    <mat-error *ngIf="form.controls['preço'].invalid && !preco?.hasError('required')">Preço invalido</mat-error>
                 </mat-form-field>
             </div>
 
             <div class="row my-3 mx-auto">
                 <mat-form-field color="accent" appearance="outline">
                     <mat-label>Jogo</mat-label>
-                    <mat-select formControlName="jogo">
-                        <mat-option *ngFor="let jogo of jogos" [value]="jogo">{{jogo.title}}</mat-option>
-                    </mat-select>
-                    <!-- <mat-error *ngIf="form.controls['jogo'].invalid"></mat-error> -->
+
+                    <input type="text" matInput [matAutocomplete]="auto2" (input)="onGameInput()" 
+                        (keydown.enter)="applyGame()" formControlName="jogo" >
+                        <mat-icon matSuffix style="transform: scale(1.1);">sports_esports</mat-icon>
+                        <mat-error *ngIf="jogo?.hasError('required')">Defina um Jogo</mat-error>
+                        <mat-error *ngIf="jogo?.invalid && !jogo?.hasError('required')">Jogo Inválido</mat-error>
+                    
+                        <mat-autocomplete #auto2="matAutocomplete">
+                            <mat-option *ngFor="let jogo of filteredOptions2 | async" [value]="jogo.title" multiple>
+                                {{ jogo.title }}
+                            </mat-option>
+                        </mat-autocomplete>
+                    <mat-error *ngIf="form.controls['jogo'].invalid">Selecione os jogos alvo do evento</mat-error>
                 </mat-form-field>
             </div>
-
-            <!-- <div class="row my-3 mx-auto">
-                <mat-form-field color="accent" appearance="outline">
-                    <mat-label>Imagem</mat-label>
-                    <input matInput formControlName="imagem" placeholder="to Be done" required>
-                     <mat-error *ngIf="form.controls['preço'].invalid"></mat-error> 
-                </mat-form-field>
-            </div> -->
             
             <div class="row mt-4 mb-1 mx-auto">
                 <button mat-raised-button color="primary" type="submit">Entrar</button>
