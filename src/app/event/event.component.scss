@@ -1,6 +1,5 @@
 mat-card {
-    background-color: #09703e;
-    cursor: pointer;
+    background-color: #9c27b0;
     width: 80%;
     margin: auto;
     display: flex;
@@ -20,6 +19,12 @@ mat-card img {
     border-radius: 5px;
 }
 
-h1{
+h1 {
     text-align: center;
+    color: white;
+    font-weight: bold;
+}
+
+p {
+    color: white;
 }

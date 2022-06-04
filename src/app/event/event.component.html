@@ -7,14 +7,15 @@
                 <img *ngIf="data.img" src="{{data.img}}">
                 <img *ngIf="!data.img" src="assets/img/events/event_default.jpg">
             </div>
-            
+
             <div class="col">
                 <h1>{{data.title}}</h1>
                 <mat-divider inset></mat-divider>
-                <p>{{data.location}}</p>
-                <p>{{data.game}}</p>
-                <p>{{data.start_date}} to {{data.end_date}}</p>
-                <p>{{data.price}}</p>
+                <p>Localização: {{data.location}}</p>
+                <p *ngIf="data.game.length == 1">Jogo-alvo: {{data.game}}</p>
+                <p *ngIf="data.game.length > 1">Jogo-alvo: {{data.game}}</p>
+                <p>De {{data.start_date}} até {{data.end_date}}</p>
+                <p>Preço: {{data.price}}</p>
             </div>
 
             <div class="col-2 d-flex justify-content-end">
@@ -23,7 +24,7 @@
                 </button>
             </div>
         </div>
-        
+
     </mat-card-content>
 
     <mat-card-actions>
