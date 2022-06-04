@@ -1,9 +1,8 @@
 mat-card {
     background-color: #09703e;
     cursor: pointer;
-    width: 100%;
-    margin-right: 16px;
-    margin: 36px auto;
+    width: 80%;
+    margin: auto;
     display: flex;
     flex: 1;
     justify-content: flex-start;
@@ -15,9 +14,12 @@ mat-card img {
     object-fit: fill;
     /*this makes the image in src fit to the size specified below*/
     width: 100%;
-    aspect-ratio: 1;
+    aspect-ratio: auto;
     /* Here you can use wherever you want to specify the width and also the height of the <img>*/
-    margin-bottom: 16px;
+    //margin: auto;
     border-radius: 5px;
-    margin-right: 5%;
+}
+
+h1{
+    text-align: center;
 }
