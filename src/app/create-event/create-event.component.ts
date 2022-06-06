@@ -6,6 +6,7 @@ import * as _moment from 'moment';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import { MatDialogRef } from '@angular/material/dialog';
 import { map, Observable, startWith } from 'rxjs';
+import { Router } from '@angular/router';
 const moment = _moment;
 
 export const DATE_FORMAT = {
@@ -32,20 +33,18 @@ export const DATE_FORMAT = {
 export class CreateEventComponent implements OnInit {
   form: FormGroup;
   filteredOptions2?: Observable<product[]>;
-
-
   jogos!: product[];
-  constructor(private _service: SharedService, private _form: FormBuilder, public dialog: MatDialogRef<CreateEventComponent>) {
+
+  constructor(private _service: SharedService, private _router: Router, private _form: FormBuilder, public dialog: MatDialogRef<CreateEventComponent>) {
     //get products
-    
-    this.form=_form.group({
+    this.form =_form.group({
         nome: new FormControl('', [Validators.required]),
         localizacao: new FormControl('', [Validators.required]),
+        cidade: new FormControl('', [Validators.required]),
         dataI: new FormControl('', [Validators.required]),
         dataF: new FormControl('', [Validators.required]),
         hora: new FormControl('', [Validators.required,Validators.pattern('^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$')]),
-        descricao: new FormControl('', [Validators.required]),
-        preço: new FormControl('', [Validators.required,Validators.pattern('^[0-9]+(\.[0-9]{1,2})?€')]),
+        preço: new FormControl('', [Validators.required,]),//Validators.pattern('^[0-9]+(\.[0-9]{1,2})?€')]),
         imagem: new FormControl('', [Validators.required]),
         jogo: new FormControl('', [Validators.required]),
       });
@@ -60,22 +59,34 @@ export class CreateEventComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.form.value);
-    var event:event;
+    var event: event;
     event = {
       title: this.form.value.nome,
-      location: this.form.value.localizacao,
+      location: this.form.value.cidade.trim() + ', ' + this.form.value.localizacao.name,
       start_date: moment(this.form.value.dataI).format('DD-MM-YYYY'),
       end_date: moment(this.form.value.dataF).format('DD-MM-YYYY'),
       hour: this.form.value.hora,
-      description: this.form.value.descricao,
       price: this.form.value.preço,
       game: this.form.value.jogo,
     }
 
-    this._service.addEvent(event);
-    
     this.dialog.close();
+    var event_product: any = {
+      title: event.title,
+      key_price: event.price,
+      price: null,
+      rating: 0,
+      description: "",
+      comments: [],
+      categories: [""],
+      platform: [""],
+      pegi: "",
+      event: event
+    }
+    
+    event_product.type = 'event';
+    this._service.openCartPage(event_product);
+    this._router.navigate(['/checkout'])
   }
 
   get jogo() { return this.form.get('jogo'); }
@@ -84,7 +95,6 @@ export class CreateEventComponent implements OnInit {
   get dataI() { return this.form.get('dataI'); }
   get dataF() { return this.form.get('dataF'); }
   get hora() { return this.form.get('hora'); }
-  get descricao() { return this.form.get('descricao'); }
   get preco() { return this.form.get('preço'); }
   get imagem() { return this.form.get('imagem'); }
 
@@ -104,12 +114,9 @@ export class CreateEventComponent implements OnInit {
       var a = this.jogos.findIndex(x => x.title.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "") == this.jogo?.value.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, ""));
       this.form.get('jogo')?.setValue(this.jogos[a].title);
     }
-
     //falta fazer costum error verifier
   }
 
-  applyGame(){
-
+  applyGame() {
   }
-
 }

@@ -11,7 +11,8 @@ export interface product {
   comments: any[],
   categories: string[],
   platform: string[],
-  pegi: string
+  pegi: string,
+  event?: event
 }
 
 export interface event {
@@ -52,7 +53,7 @@ export class SharedService {
   /* Initialize the cart_details information */
   private filterSource = new BehaviorSubject<any>(localStorage.getItem('filter') ? localStorage.getItem('filter') : '');
   filter = this.filterSource.asObservable();
-
+  
   products: any[] = [
     {
       title: 'Rocket League',
@@ -229,8 +230,8 @@ export class SharedService {
       title: 'DreamHack Masters Stockholm',
       location: 'Estocolmo, Suécia',
       game: 'Counter-Strike: Global Offensive',
-      start_date: '2022-06-01',
-      end_date: '2022-06-02',
+      start_date: '01-06-2022',
+      end_date: '02-06-2022',
       price: '250,00 €',
       img: '/assets/img/events/dreamhack.jpg',
     },
@@ -239,8 +240,8 @@ export class SharedService {
       title: 'Liga Portuguesa: League of Legends',
       location: 'Lisboa, Portugal',
       game: 'League of Legends',
-      start_date: '2022-07-07',
-      end_date: '2022-07-09',
+      start_date: '07-07-2022',
+      end_date: '09-07-2022',
       price: '15,00 €',
       // change image here 
       img: '/assets/img/events/dreamhack.jpg',
@@ -250,8 +251,8 @@ export class SharedService {
       title: 'Rocket League Championship Series',
       location: 'Dalas, EUA',
       game: 'Rocket League',
-      start_date: '2022-10-20',
-      end_date: '2022-10-25',
+      start_date: '20-10-2022',
+      end_date: '25-10-2022',
       price: '120,00 €',
       // change image here 
       img: '/assets/img/events/dreamhack.jpg',
@@ -261,8 +262,8 @@ export class SharedService {
       title: 'IEM Rio Major 2022',
       location: 'Rio de Janeiro, Brasil',
       game: 'Counter Strike: Global Offensive',
-      start_date: '2022-10-31',
-      end_date: '2022-11-13',
+      start_date: '31-10-2022',
+      end_date: '13-11-2022',
       price: '150,00 €',
       // change image here 
       img: '/assets/img/events/dreamhack.jpg',

@@ -33,14 +33,12 @@ export class CheckoutComponent implements OnInit {
   checked3: boolean = false;
  
   cart: any = [];
-  cart_subscription: any = [];
   subscription: Subscription = new Subscription();
 
   constructor(private _formBuilder: FormBuilder, public done_dialog: MatDialog, private _router: Router, private _service: SharedService) {
     this.subscription = this._service.cartOpened.subscribe((data: product[]) => {
       var cart = data;
-      this.cart_subscription = data;
-
+      
       /* Get the qty of items */
       cart.forEach((element: any) => {        
         this.cart.push({ 
@@ -48,13 +46,14 @@ export class CheckoutComponent implements OnInit {
           key_price: element.key_price,
           price: element.price,
           type: element.type,
+          event: element.event,
           qty: cart.filter((v: any) => (v.title === element.title && v.type === element.type)).length
         });
       });
-
+      
       /* Remove duplicate values es6 magic */
       this.cart = this.cart.filter((value: any, index: any, self: any) =>
-        index === self.findIndex((t: any) => (
+      index === self.findIndex((t: any) => (
         t.place === value.place && t.title === value.title && t.type === value.type
         ))
       );
@@ -75,6 +74,11 @@ export class CheckoutComponent implements OnInit {
       payment: ['', Validators.required],
       phone: [''],
     }, {validator: phoneValidator});
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+    if (this.cart[0]?.type == 'event') this._service.openCartPage(null);
   }
 
   /* Shorthands for form controls (used from within template) */
@@ -156,21 +160,23 @@ export class CheckoutComponent implements OnInit {
   }
 
   checkoutDone() {
-    console.log(this.cart);
-
     const dialogRef = this.done_dialog.open(DoneComponent, {
       width: '40%',
       height: '40%'
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe(_ => {
+      if (this.cart[0].type == 'event') {
+        this.cart[0].event.img = '/assets/img/events/event_default.jpg';
+        this._service.addEvent(this.cart[0].event);
+      }
       this._router.navigate(['/']);
       this._service.openCartPage(null);
     });
   }
 
   productPrice(product: any) {
-    if (product.type == 'key' || product.type == 'ticket') {
+    if (product.type == 'key' || product.type == 'ticket' || product.type == 'event') {
       return product.key_price;
     } else {
       return product.price;
@@ -181,6 +187,7 @@ export class CheckoutComponent implements OnInit {
     if (product.type == 'key') return 'Chave';
     if (product.type == 'ticket') return 'Bilhete';
     if (product.type == 'CD') return 'CD-ROM';
+    if (product.type == 'event') return 'Criação de evento';
 
     return null
   }
@@ -200,7 +207,9 @@ export class CheckoutComponent implements OnInit {
     this.cart.forEach((element: any) => {
       if (element.type == 'key' || element.type == 'ticket') {
         total += element.qty * parseFloat(element.key_price.substring(0, element.key_price.length - 3).replace(/,/g, '.'));
-      } else {
+      }  else if(element.type == 'event') {
+        total = parseFloat(element.key_price.substring(0, element.key_price.length - 3).replace(/,/g, '.'));
+      }else {
         total += element.qty * parseFloat(element.price.substring(0, element.price.length - 3).replace(/,/g, '.'));
       }
     });

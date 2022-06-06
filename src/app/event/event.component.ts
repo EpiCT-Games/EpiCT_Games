@@ -8,16 +8,14 @@ import { event,product,SharedService } from '../shared.service';
   styleUrls: ['./event.component.scss']
 })
 export class EventComponent implements OnInit {
-
   @Input() data: any;
-  
   isActive1 = false;
 
   constructor(private _router: Router, private _service: SharedService) { }
 
   ngOnInit(): void {
-
   }
+
   /* Open the page with the product details */
   open_event() {
     this._router.navigate(['/product']);  // change navigation to future page of "/event"
@@ -40,7 +38,6 @@ export class EventComponent implements OnInit {
     }
     
     event_product.type = 'ticket';
-    console.log(event_product);
     this._service.openCartPage(event_product);
   }
 }
