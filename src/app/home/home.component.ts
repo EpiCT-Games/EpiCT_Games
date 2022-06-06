@@ -1,4 +1,3 @@
-import { LabelType, Options } from '@angular-slider/ngx-slider';
 import { Component, Input, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { Subscription } from 'rxjs';
@@ -76,8 +75,6 @@ export class HomeComponent implements OnInit {
       }
       this.refreshFilters();
     });
-    
-    // console.log(this.events);
   }
 
   ngOnInit(): void {

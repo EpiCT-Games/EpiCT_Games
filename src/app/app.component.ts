@@ -58,7 +58,7 @@ export class AppComponent {
 
   redirectCreateEvent() {
     const dialogRef = this.dialog.open(CreateEventComponent, {
-      width: '50%'
+      width: '35%'
     });
   }
 

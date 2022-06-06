@@ -17,7 +17,6 @@ import { ProductComponent } from './product/product.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { EventComponent } from './event/event.component';
 import { ShowProductComponent } from './show-product/show-product.component';
-import { ShowEventComponent } from './show-event/show-event.component';
 import { MatBadgeModule } from '@angular/material/badge';
 import { ShowCartComponent } from './show-cart/show-cart.component';
 import { LoginComponent } from './login/login.component';
@@ -45,7 +44,6 @@ import { MatSelectModule } from '@angular/material/select';
     ProductComponent,
     EventComponent,
     ShowProductComponent,
-    ShowEventComponent,
     ShowCartComponent,
     LoginComponent,
     RegisterComponent,
