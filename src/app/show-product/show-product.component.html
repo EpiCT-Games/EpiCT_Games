@@ -43,14 +43,14 @@
                     <div class="col-5 h-100"> 
                         <div class="row my-auto">
                             <h2 class="price">{{product?.key_price}}</h2>
-                            <button (click)="addCartKey()" mat-raised-button color="primary">Adicionar Chave
+                            <button (click)="addCartKey()" mat-raised-button color="accent">Adicionar Chave
                                 <mat-icon style="transform: rotate(45deg);">key</mat-icon>
                             </button>                            
                         </div>
 
                         <div class="row my-5">
                             <h2 class="price">{{product?.price}}</h2>
-                            <button *ngIf="product.price != null" (click)="addCartCD()" mat-raised-button color="primary">Adicionar CD
+                            <button *ngIf="product.price != null" (click)="addCartCD()" mat-raised-button color="accent">Adicionar CD
                                 <mat-icon>album</mat-icon>
                             </button>
                         </div>
