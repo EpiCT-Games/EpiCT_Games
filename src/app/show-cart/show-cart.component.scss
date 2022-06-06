@@ -1,5 +1,8 @@
 img {
-    max-width: 13vw;
+    object-fit: fill;
+    /*this makes the image in src fit to the size specified below*/
+    width: 100%;
+    aspect-ratio: auto;
 }
 
 p {
