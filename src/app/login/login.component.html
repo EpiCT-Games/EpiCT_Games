@@ -22,6 +22,10 @@
                     <mat-error *ngIf="form.controls['password'].invalid">Você deve inserir uma password</mat-error>
                 </mat-form-field>
             </div>
+
+            <div class="row text-center">
+                <p>Não tens conta? <span (click)="register()">Registe-se agora!</span></p>
+            </div>
             
             <div class="row mt-4 mb-1 mx-auto">
                 <button mat-raised-button color="accent" type="submit">Entrar</button>

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
+import { RegisterComponent } from '../register/register.component';
 import { SharedService } from '../shared.service';
 
 @Component({
@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
     password: new FormControl('', [Validators.required])
   });
   
-  constructor(private _snackBar: MatSnackBar, private _service: SharedService, public dialogRef: MatDialogRef<LoginComponent>) { }
+  constructor(private _snackBar: MatSnackBar, private _service: SharedService, public dialog: MatDialog, private dialogRef: MatDialogRef<LoginComponent>) { }
 
   ngOnInit(): void {
   }
@@ -46,5 +46,11 @@ export class LoginComponent implements OnInit {
         this._snackBar.open('Email ou senha incorretos!', 'Fechar', { duration: 2500 });
       }
     } 
+  }
+
+  register() {
+    /* Close the Dialog */
+    this.dialogRef.close();
+    const dialogRef = this.dialog.open(RegisterComponent);
   }
 }

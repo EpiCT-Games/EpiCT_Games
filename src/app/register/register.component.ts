@@ -3,6 +3,10 @@ import { FormGroup, FormControl, Validators,  ValidationErrors, ValidatorFn, Abs
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import * as _moment from 'moment';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { LoginComponent } from '../login/login.component';
+import { SharedService } from '../shared.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 const moment = _moment;
 
 export const DATE_FORMAT = {
@@ -32,7 +36,12 @@ export class RegisterComponent implements OnInit {
   minPw: number = 8;
   form!: FormGroup;
 
-  constructor(private _formBuilder: FormBuilder) { }
+  constructor(private _formBuilder: FormBuilder,
+    private _service: SharedService,
+    private _snackBar: MatSnackBar,
+    public dialog: MatDialog,
+    private dialogRef: MatDialogRef<RegisterComponent>
+  ) { }
 
   ngOnInit(): void {
     this.form = this._formBuilder.group({
@@ -41,14 +50,16 @@ export class RegisterComponent implements OnInit {
       email: new FormControl('', [Validators.required, Validators.email]),
       password: ['', [Validators.required, Validators.minLength(this.minPw)]],
       password2: ['', [Validators.required]],
-      bday: new FormControl('', [Validators.required]),
-      terms: new FormControl(false, [Validators.requiredTrue])    
-    }, {validator: passwordMatchValidator});
+      company: new FormControl(false),
+      nif: new FormControl(''),
+    }, {validator: [passwordMatchValidator, nifMatchValidator]});
   }
 
   /* Shorthands for form controls (used from within template) */
   get password() { return this.form.get('password'); }
   get password2() { return this.form.get('password2'); }
+  get nif() { return this.form.get('nif'); }
+  get company() { return this.form.get('company'); }
 
   /* Called on each input in either password field */
   onPasswordInput() {
@@ -56,6 +67,13 @@ export class RegisterComponent implements OnInit {
       this.password2?.setErrors([{'passwordMismatch': true}]);
     else
       this.password2?.setErrors(null);
+  }
+
+  onNifInput() {
+    if (this.form.hasError('nifWrong'))
+      this.nif?.setErrors([{'nifWrong': true}]);
+    else
+      this.nif?.setErrors(null);
   }
 
   /* Error Message for Email validation */
@@ -71,8 +89,39 @@ export class RegisterComponent implements OnInit {
   submit() {
     /* Only submit if the form is valid */
     if (this.form.valid) {
-      console.log(this.form.value);
+      var user = {
+        email: this.form.value.email,
+        password: this.form.value.password,
+        nif: this.form.value.nif
+      }
+
+      var result = this._service.register(user);
+
+      if (result) {
+        /* Close the Dialog */
+        this.dialogRef.close();
+        this._snackBar.open('Registo realizado com sucesso!', 'Fechar', { duration: 2500 });
+      } else {
+        this._snackBar.open('Email inserido já está registo!', 'Fechar', { duration: 2500 });
+      }
     }
+  }
+
+  login() {
+    // Close the dialog
+    this.dialogRef.close();
+    const dialogRef = this.dialog.open(LoginComponent, {
+      width: '20%'
+    });
+  }
+
+  companyChange() {
+    if (this.company?.value) {
+      this.form.controls['nif'].setValidators([Validators.required]);
+    } else {
+      this.form.controls['nif'].clearValidators();
+    }
+    this.form.controls['nif'].updateValueAndValidity();
   }
 }
 
@@ -81,4 +130,14 @@ export const passwordMatchValidator: ValidatorFn = (formGroup: AbstractControl )
     return null;
   else
     return {passwordMismatch: true};
+};
+
+export const nifMatchValidator: ValidatorFn = (formGroup: AbstractControl ): ValidationErrors | null => {
+  var nif = formGroup.get('nif')?.value;
+
+  if (formGroup.get('nif')?.status == 'VALID') return null
+
+  if (nif.length == 12 && nif.substring(0, 3) == '500' && !isNaN(Number(nif)))
+    return null;
+  return {nifWrong: true};
 };

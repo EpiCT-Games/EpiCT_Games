@@ -331,6 +331,17 @@ export class SharedService {
     return found;
   }
 
+  register(user: user) {
+    var user_query = this.users.filter((u: user) => u.email == user.email);
+
+    if (user_query.length == 0) {
+      this.users.push(user);
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   logout() {
     this.changeLogStatus(false);
     this.changeNif('');

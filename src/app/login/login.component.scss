@@ -6,3 +6,13 @@
 h2 {
     text-align: center;
 }
+
+span {
+    cursor: pointer;
+    text-decoration: underline;
+    color: #7b1fa2;
+}
+
+span:hover {
+    color: #512DA8;
+}

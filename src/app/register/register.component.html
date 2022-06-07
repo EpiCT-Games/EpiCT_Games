@@ -55,13 +55,20 @@
             </div>
 
             <div class="row my-3 mx-auto">
-                <mat-form-field color="accent">
-                    <mat-label>Data de Nascimento</mat-label>
-                    <input matInput [matDatepicker]="picker" formControlName="bday" required>
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-                    <mat-error *ngIf="form.controls['bday'].invalid">Data introduzida inválida</mat-error>
+                <mat-checkbox formControlName="company" (change)="companyChange()">Sou uma empresa</mat-checkbox>
+            </div>
+
+            <div *ngIf="company?.value" class="row my-3 mx-auto">
+                <mat-form-field class="mx-auto" color="accent">
+                    <mat-label>NIF</mat-label>
+                    <input matInput placeholder="500xxxxxxxxx" formControlName="nif" (input)="onNifInput()" required>
+                    <mat-error *ngIf="nif?.hasError('required')">Insira um nif</mat-error>
+                    <mat-error *ngIf="form.controls['nif'].invalid && !nif?.hasError('required')">Você deve inserir um nif válido</mat-error>
                 </mat-form-field>
+            </div>
+
+            <div class="row text-center">
+                <p>Ja tens conta? <span (click)="login()">Faz login agora!</span></p>
             </div>
 
             <div class="row mt-4 mb-1 mx-auto">
