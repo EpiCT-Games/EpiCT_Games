@@ -115,6 +115,10 @@ export class RegisterComponent implements OnInit {
     });
   }
 
+  close() {
+    this.dialogRef.close();
+  }
+
   companyChange() {
     if (this.company?.value) {
       this.form.controls['nif'].setValidators([Validators.required]);

@@ -24,6 +24,7 @@ export class CheckoutComponent implements OnInit {
   paymentForm!: FormGroup;
   payment: string = "";
   phone_disable: boolean = true;
+  company: boolean = false;
 
   isActive1: boolean = false;
   isActive2: boolean = false;
@@ -34,6 +35,7 @@ export class CheckoutComponent implements OnInit {
  
   cart: any = [];
   subscription: Subscription = new Subscription();
+  subscriptionN: Subscription = new Subscription();
 
   constructor(private _formBuilder: FormBuilder, public done_dialog: MatDialog, private _router: Router, private _service: SharedService) {
     this.subscription = this._service.cartOpened.subscribe((data: product[]) => {
@@ -58,6 +60,8 @@ export class CheckoutComponent implements OnInit {
         ))
       );
     });
+
+    this.subscriptionN = this._service.currentNif.subscribe(nif => nif ? this.company = true : this.company = false);
   }
 
   ngOnInit() {
@@ -75,7 +79,7 @@ export class CheckoutComponent implements OnInit {
       phone: [''],
     }, {validator: phoneValidator});
 
-    if (this.cart[0]?.type == 'event') {
+    if (this.company) {
       this.infoForm.controls['nif'].setValue(localStorage.getItem('nif'));
     }
   }

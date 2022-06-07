@@ -48,6 +48,10 @@ export class LoginComponent implements OnInit {
     } 
   }
 
+  close() {
+    this.dialogRef.close();
+  }
+
   register() {
     /* Close the Dialog */
     this.dialogRef.close();

@@ -127,6 +127,10 @@ export class CreateEventComponent implements OnInit {
       this.dataF?.setErrors(null);
     }
   }
+
+  close() {
+    this.dialog.close();
+  }
 }
 
 export const gameValidator: ValidatorFn = (formGroup: AbstractControl ): ValidationErrors | null  => {

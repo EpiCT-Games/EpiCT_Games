@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-done',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DoneComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dialogRef: MatDialogRef<DoneComponent>) { 
+    setTimeout(() => {
+      this.dialogRef.close();
+    }, 4000);
+  }
 
   ngOnInit(): void {
   }
