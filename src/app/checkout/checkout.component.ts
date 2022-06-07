@@ -74,6 +74,10 @@ export class CheckoutComponent implements OnInit {
       payment: ['', Validators.required],
       phone: [''],
     }, {validator: phoneValidator});
+
+    if (this.cart[0]?.type == 'event') {
+      this.infoForm.controls['nif'].setValue(localStorage.getItem('nif'));
+    }
   }
 
   ngOnDestroy() {

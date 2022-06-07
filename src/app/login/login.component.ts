@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { SharedService } from '../shared.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +18,7 @@ export class LoginComponent implements OnInit {
     password: new FormControl('', [Validators.required])
   });
   
-  constructor() { }
+  constructor(private _snackBar: MatSnackBar, private _service: SharedService, public dialogRef: MatDialogRef<LoginComponent>) { }
 
   ngOnInit(): void {
   }
@@ -32,9 +36,15 @@ export class LoginComponent implements OnInit {
   submit() {
     /* Only submit if the form is valid */
     if (this.form.valid) {
+      var result = this._service.login(this.form.get('email')!.value, this.form.get('password')!.value);
 
-    } else {
-      
-    }
+      if (result) {
+        /* Close the Dialog */
+        this.dialogRef.close();
+        this._snackBar.open('Login realizado com sucesso!', 'Fechar', { duration: 2500 });
+      } else {
+        this._snackBar.open('Email ou senha incorretos!', 'Fechar', { duration: 2500 });
+      }
+    } 
   }
 }

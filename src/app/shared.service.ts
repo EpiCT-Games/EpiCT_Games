@@ -1,6 +1,13 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
+
+export interface user {
+  email: string;
+  password: string;
+  nif?: string;
+}
+
 export interface product {
   title: string,
   key_price: string,
@@ -37,6 +44,14 @@ export interface comment {
   providedIn: 'root'
 })
 export class SharedService {
+  /* Initialize the log status as true or false*/
+  private logStatusSource = new BehaviorSubject<any>(localStorage.getItem('loggedIn') === 'true' ? true : false);
+  currentLogStatus = this.logStatusSource.asObservable();
+
+  /* Initialize the nif empty*/
+  private nifSource = new BehaviorSubject<any>(localStorage.getItem('nif') ? localStorage.getItem('nif') : '');
+  currentNif = this.nifSource.asObservable();
+
   /* Initialize the product information */
   private productSource = new BehaviorSubject<product>(JSON.parse(localStorage.getItem('product-page')!));
   productOpened = this.productSource.asObservable();
@@ -53,6 +68,18 @@ export class SharedService {
   private filterSource = new BehaviorSubject<any>(localStorage.getItem('filter') ? localStorage.getItem('filter') : '');
   filter = this.filterSource.asObservable();
   
+  users: user[] = [
+    {
+      email: 'andre@ua.pt',
+      password: 'andreola'
+    },
+    {
+      email: 'hr@dreamhack.com',
+      password: 'dreamhack',
+      nif: '500123456789'
+    }
+  ]
+
   products: any[] = [
     {
       title: 'Rocket League',
@@ -274,6 +301,40 @@ export class SharedService {
   ]
 
   constructor() { }
+
+  /* Change log status used across the app*/
+  changeLogStatus(logStatus: boolean) {
+    this.logStatusSource.next(logStatus);
+    localStorage.setItem('loggedIn', logStatus.toString());
+  }
+
+  /* Change log status used across the app*/
+  changeNif(nif: string) {
+    this.nifSource.next(nif);
+    localStorage.setItem('nif', nif);
+  }
+
+  login(email: string, password: string) {
+    var found: boolean = false;
+
+    this.users.forEach((user: user) => {
+      if (user.email == email && user.password == password) {
+        this.changeLogStatus(true);
+        if (user.nif != null) 
+          this.changeNif(user.nif);
+        else
+          this.changeNif("");
+        found = true;
+      }
+    });
+
+    return found;
+  }
+
+  logout() {
+    this.changeLogStatus(false);
+    this.changeNif('');
+  }
 
   getProducts() {
     if (localStorage.getItem('products') == null) {

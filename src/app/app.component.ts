@@ -16,12 +16,19 @@ export class AppComponent {
   filterValue: string = '';
   title: string = 'EpiCT_Games';
   cart_number: number = 0;
-  subscription: Subscription = new Subscription();
+  loggedIn: boolean = false;
+  company: boolean = false;
+  subscriptionC: Subscription = new Subscription();
+  subscriptionL: Subscription = new Subscription();
+  subscriptionN: Subscription = new Subscription();
 
-  constructor(private _router: Router, private _service: SharedService, public dialog: MatDialog) {}
+  constructor(private _router: Router, private _service: SharedService, public dialog: MatDialog) {
+    this.subscriptionL = this._service.currentLogStatus.subscribe(logStatus => this.loggedIn = logStatus);
+    this.subscriptionN = this._service.currentNif.subscribe(nif => nif ? this.company = true : this.company = false);
+  }
 
   ngOnInit() {
-    this.subscription = this._service.cartOpened.subscribe((data: any) => {
+    this.subscriptionC = this._service.cartOpened.subscribe((data: any) => {
       if (data == null) {
         this.cart_number = 0;
       } else {
@@ -65,5 +72,9 @@ export class AppComponent {
   /* Open Register Dialog */
   redirectRegister() {
     const dialogRef = this.dialog.open(RegisterComponent);
+  }
+
+  logout() {
+    this._service.logout();
   }
 }

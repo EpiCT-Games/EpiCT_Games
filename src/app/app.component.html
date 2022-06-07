@@ -19,26 +19,25 @@
         </button>
     </div>
 
-    <div class="col">
-        <button mat-button (click)="redirectCreateEvent()">
-            Criar evento
-            <mat-icon>event</mat-icon>
-        </button>
+    <div *ngIf="!loggedIn" class="col"></div>
+    <div *ngIf="!loggedIn" class="col">
+        <button mat-button (click)="redirectLogin()">Login<mat-icon>login</mat-icon></button>
+    </div>
+    <div *ngIf="!loggedIn" class="col mr-4">
+        <button mat-button (click)="redirectRegister()">Registo<mat-icon>app_registration</mat-icon></button>
     </div>
 
-    <div class="col">
-        <button mat-button (click)="redirectLogin()">
-            Login
-            <mat-icon>login</mat-icon>
-        </button>
+    <div *ngIf="loggedIn" class="col"></div>
+    <div *ngIf="company" class="col-1">
+        <button mat-button (click)="redirectCreateEvent()">Criar evento<mat-icon>event</mat-icon></button>
+    </div>
+    <div *ngIf="loggedIn" class="col-">
+        <button mat-button>Perfil<mat-icon>account_circle</mat-icon></button>
+    </div>
+    <div *ngIf="loggedIn" class="col-1">
+        <button mat-button (click)="logout()">Logout<mat-icon>exit_to_app</mat-icon></button>
     </div>
 
-    <div class="col mr-4">
-        <button mat-button (click)="redirectRegister()"> 
-            Registo
-            <mat-icon>app_registration</mat-icon>
-        </button>
-    </div>
 </mat-toolbar>
 
 <router-outlet></router-outlet>
