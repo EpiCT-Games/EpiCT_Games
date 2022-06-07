@@ -12,7 +12,8 @@
                 <p>{{data.location}}</p>
                 <p *ngIf="data.game.length == 1">{{data.game}}</p>
                 <p *ngIf="data.game.length > 1">{{data.game}}</p>
-                <p><b>Início: </b> {{data.start_date}}<br><b>Fim: </b> {{data.end_date}}</p>
+                <p><b>Início: </b> {{dateToString(data.start_date)}}<br><b>Fim: </b> {{dateToString(data.end_date)}}</p>
+                <p><b>Hora de Início: </b> {{data.hour}}</p>
             </div>
 
             <div class="col-2 d-flex mt-auto justify-content-end">

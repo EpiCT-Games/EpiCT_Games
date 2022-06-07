@@ -22,8 +22,7 @@ export interface event {
   game: string,
   start_date?: string,
   end_date?: string,
-  hour?: string,
-  description?: string,
+  hour: string,
   price: string,
 }
 
@@ -233,6 +232,7 @@ export class SharedService {
       start_date: '01-06-2022',
       end_date: '02-06-2022',
       price: '250,00 €',
+      hour: '12:00',
       img: '/assets/img/events/dreamhack.jpg',
     },
 
@@ -243,6 +243,7 @@ export class SharedService {
       start_date: '07-07-2022',
       end_date: '09-07-2022',
       price: '15,00 €',
+      hour: '10:00',
       // change image here 
       img: '/assets/img/events/dreamhack.jpg',
     },
@@ -254,6 +255,7 @@ export class SharedService {
       start_date: '20-10-2022',
       end_date: '25-10-2022',
       price: '120,00 €',
+      hour: '18:00',
       // change image here 
       img: '/assets/img/events/dreamhack.jpg',
     },
@@ -265,11 +267,9 @@ export class SharedService {
       start_date: '31-10-2022',
       end_date: '13-11-2022',
       price: '150,00 €',
+      hour: '11:00',
       // change image here 
-      img: '/assets/img/events/dreamhack.jpg',
-      hour:'18:00',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-
+      img: '/assets/img/events/dreamhack.jpg'
     }
   ]
 

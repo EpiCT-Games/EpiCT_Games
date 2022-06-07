@@ -19,7 +19,7 @@ export class ShowCartComponent implements OnInit {
       this.cart_subscription = data;
 
       /* Get the qty of items */
-      cart.forEach((element: any) => {        
+      cart?.forEach((element: any) => {        
         this.cart.push({ 
           title: element.title,
           key_price: element.key_price,

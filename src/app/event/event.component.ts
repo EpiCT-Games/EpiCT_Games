@@ -8,6 +8,7 @@ import { event,product,SharedService } from '../shared.service';
   styleUrls: ['./event.component.scss']
 })
 export class EventComponent implements OnInit {
+  month: string[] = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
   @Input() data: any;
   isActive1 = false;
 
@@ -39,5 +40,11 @@ export class EventComponent implements OnInit {
     
     event_product.type = 'ticket';
     this._service.openCartPage(event_product);
+  }
+
+  dateToString(date: string) {
+    var info_list = date.split('-');
+
+    return info_list[0] + ' de ' + this.month[parseInt(info_list[1]) - 1] + ' de ' + info_list[2];
   }
 }

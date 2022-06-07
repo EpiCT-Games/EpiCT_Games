@@ -73,7 +73,6 @@ export class HomeComponent implements OnInit {
         this.products = Object.create(this.all_products);
         this.events = this._service.getEvent();
       }
-      console.log(this.events)
       this.refreshFilters();
     });
   }
