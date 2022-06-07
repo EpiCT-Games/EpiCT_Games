@@ -36,14 +36,26 @@
             <form [formGroup]="categorias">
                 <p><mat-checkbox formControlName="acao" color="accent" class="my-2"><span>Ação</span></mat-checkbox></p>
                 <p><mat-checkbox formControlName="aventura" color="accent" class="my-2"><span>Aventura</span></mat-checkbox></p>
-                <p><mat-checkbox formControlName="fps" color="accent" class="my-2"><span>FPS</span></mat-checkbox></p>
-                <p><mat-checkbox formControlName="rpg" color="accent" class="my-2"><span>RPG</span></mat-checkbox></p>
+                <p>
+                    <mat-checkbox formControlName="fps" color="accent" class="my-2"><span>FPS</span></mat-checkbox>
+                    <mat-icon matTooltip="First Person Shooter" matTooltipPosition="right"
+                        class="help material-symbols-outlined">help</mat-icon>
+                </p>
+                <p>
+                    <mat-checkbox formControlName="rpg" color="accent" class="my-2"><span>RPG</span></mat-checkbox>
+                    <mat-icon matTooltip="Role-play Game" matTooltipPosition="right"
+                        class="help material-symbols-outlined">help</mat-icon>
+                </p>
                 <p><mat-checkbox formControlName="estrategia" color="accent" class="my-2"><span>Estratégia</span></mat-checkbox></p>
                 <p><mat-checkbox formControlName="battleroyale" color="accent" class="my-2"><span>Battle Royale</span></mat-checkbox></p>
                 <div class="row mx-auto mt-2" *ngIf="!categories_expanded"><button (click)="categories_expanded=true" color="accent" mat-raised-button>Mostrar mais <mat-icon>expand_more</mat-icon></button></div>
 
                 <p><mat-checkbox formControlName="desporto" color="accent" *ngIf="categories_expanded" class="my-2"><span>Desporto</span></mat-checkbox></p>
-                <p><mat-checkbox formControlName="mmo" color="accent" *ngIf="categories_expanded" class="my-2"><span>MMO</span></mat-checkbox></p>
+                <p>
+                    <mat-checkbox formControlName="mmo" color="accent" *ngIf="categories_expanded" class="my-2"><span>MMO</span></mat-checkbox>
+                    <mat-icon matTooltip="Massively multiplayer online game" matTooltipPosition="right"
+                    *ngIf="categories_expanded" class="help material-symbols-outlined">help</mat-icon>
+                </p>
                 <p><mat-checkbox formControlName="corridas" color="accent" *ngIf="categories_expanded" class="my-2"><span>Corridas</span></mat-checkbox></p>
                 <p><mat-checkbox formControlName="indie" color="accent" *ngIf="categories_expanded" class="my-2"><span>Indie</span></mat-checkbox></p>
                 <p><mat-checkbox formControlName="luta" color="accent" *ngIf="categories_expanded" class="my-2"><span>Luta</span></mat-checkbox></p>
