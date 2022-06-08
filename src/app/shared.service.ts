@@ -248,6 +248,78 @@ export class SharedService {
       platform: ['PC', 'Playstation', 'Xbox'],
       categories: ['Ação', 'RPG'],
       pegi: 'PEGI 12'
+    },
+    {
+      title: 'The Last of Us Part II',
+      key_price: '20,90 €',
+      price: '34,99 €',
+      rating: 4.3,
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      image: '/assets/img/products/last_of_us_2.jpg',
+      comments: ['1', '2'],
+      platform: ['PC', 'Playstation', 'Xbox'],
+      categories: ['Ação'],
+      pegi: 'PEGI 12'
+    },
+    {
+      title: 'Uncharted 2',
+      key_price: '20,90 €',
+      price: '34,99 €',
+      rating: 4.3,
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      image: '/assets/img/products/uncharted_2.jpg',
+      comments: ['1', '2'],
+      platform: ['PC', 'Playstation'],
+      categories: ['Ação'],
+      pegi: 'PEGI 12'
+    },
+    {
+      title: 'battlefield V',
+      key_price: '20,90 €',
+      price: '34,99 €',
+      rating: 4.3,
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      image: '/assets/img/products/battlefield_v.jpg',
+      comments: ['1', '2'],
+      platform: ['PC', 'Playstation'],
+      categories: ['Ação','FPS'],
+      pegi: 'PEGI 12'
+    },
+    {
+      title: 'Sing Star:Portugal Hits',
+      key_price: '20,90 €',
+      price: '34,99 €',
+      rating: 4.3,
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      image: '/assets/img/products/sing_star.jpg',
+      comments: ['1', '2'],
+      platform: [ 'Playstation'],
+      categories: ['Indie'],
+      pegi: 'PEGI 12'
+    },
+    {
+      title: 'The Last of Us',
+      key_price: '20,90 €',
+      price: '34,99 €',
+      rating: 4.3,
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      image: '/assets/img/products/last_of_us.jpg',
+      comments: ['1', '2'],
+      platform: ['PC', 'Playstation'],
+      categories: ['Ação'],
+      pegi: 'PEGI 12'
+    },
+    {
+      title: 'Just Dance 2022',
+      key_price: '20,90 €',
+      price: '34,99 €',
+      rating: 4.3,
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      image: '/assets/img/products/just_dance_2022.jpg',
+      comments: ['1', '2'],
+      platform: ['PC', 'Playstation'],
+      categories: ['Indie'],
+      pegi: 'PEGI 12'
     }
   ];
 
@@ -272,7 +344,7 @@ export class SharedService {
       price: '15,00 €',
       hour: '10:00',
       // change image here 
-      img: '/assets/img/events/dreamhack.jpg',
+      img: '/assets/img/events/lol.jpg',
     },
 
     {
@@ -284,7 +356,7 @@ export class SharedService {
       price: '120,00 €',
       hour: '18:00',
       // change image here 
-      img: '/assets/img/events/dreamhack.jpg',
+      img: '/assets/img/events/rl.jpg',
     },
 
     {
@@ -296,7 +368,7 @@ export class SharedService {
       price: '150,00 €',
       hour: '11:00',
       // change image here 
-      img: '/assets/img/events/dreamhack.jpg'
+      img: '/assets/img/events/rio.jpg'
     }
   ]
 
@@ -348,6 +420,7 @@ export class SharedService {
   }
 
   getProducts() {
+    localStorage.clear();
     if (localStorage.getItem('products') == null) {
       localStorage.setItem('products', JSON.stringify(this.products));
     }
