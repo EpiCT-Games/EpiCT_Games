@@ -420,7 +420,6 @@ export class SharedService {
   }
 
   getProducts() {
-    localStorage.clear();
     if (localStorage.getItem('products') == null) {
       localStorage.setItem('products', JSON.stringify(this.products));
     }
