@@ -139,9 +139,16 @@ export const passwordMatchValidator: ValidatorFn = (formGroup: AbstractControl )
 export const nifMatchValidator: ValidatorFn = (formGroup: AbstractControl ): ValidationErrors | null => {
   var nif = formGroup.get('nif')?.value;
 
-  if (formGroup.get('nif')?.status == 'VALID') return null
+  console.log(formGroup.get('nif')?.status);
 
-  if (nif.length == 12 && nif.substring(0, 3) == '500' && !isNaN(Number(nif)))
-    return null;
-  return {nifWrong: true};
+  if (formGroup.get('nif')?.status == 'VALID') {
+    if (nif.length == 9 && !isNaN(Number(nif)) && Number(nif.substring(0, 3)) >= 500 && Number(nif.substring(0, 3)) <= 599) {
+      console.log('aqui')
+      return null;
+    } else {
+      return {nifWrong: true};
+    }
+  } else {
+    return {nifWrong: true};
+  }
 };
