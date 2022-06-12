@@ -87,24 +87,24 @@ export class RegisterComponent implements OnInit {
 
   /* Submit form action */
   submit() {
+
     /* Only submit if the form is valid */
-    if (this.form.valid) {
-      var user = {
-        email: this.form.value.email,
-        password: this.form.value.password,
-        nif: this.form.value.nif
-      }
-
-      var result = this._service.register(user);
-
-      if (result) {
-        /* Close the Dialog */
-        this.dialogRef.close();
-        this._snackBar.open('Registo realizado com sucesso!', 'Fechar', { duration: 2500 });
-      } else {
-        this._snackBar.open('Email inserido já está registo!', 'Fechar', { duration: 2500 });
-      }
+    var user = {
+      email: this.form.value.email,
+      password: this.form.value.password,
+      nif: this.form.value.nif
     }
+
+    var result = this._service.register(user);
+
+    if (result) {
+      /* Close the Dialog */
+      this.dialogRef.close();
+      this._snackBar.open('Registo realizado com sucesso!', 'Fechar', { duration: 2500 });
+    } else {
+      this._snackBar.open('Email inserido já está registo!', 'Fechar', { duration: 2500 });
+    }
+    
   }
 
   login() {
